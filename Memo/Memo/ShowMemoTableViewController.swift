@@ -10,14 +10,21 @@ import UIKit
 
 class ShowMemoTableViewController: UITableViewController {
     
-    var acqList = ["Memo1", "Memo2", "Memo3", "Memo4", "Memo5"]
+    var acqList = [Memo("Memo1"), Memo("Memo2"), Memo("Memo3"), Memo("Memo4"), Memo("Memo5")]
     
+
     //self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+      
+        for memo in acqList {
+            if let mContent = memo?.mContent {
+                memo?.mImage = UIImage(named: mContent)
+                memo?.mTime = "11.26"
+            } }
+        //self.navigationController?.navigationBar.barTintColor = UIColor.white
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,11 +55,20 @@ class ShowMemoTableViewController: UITableViewController {
     }
     */
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: "MemoListCell", for: indexPath)
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: "MemoListCell", for: indexPath)
+//        // Configure the cell...
+//        cell.imageView?.image = UIImage(named: acqList[indexPath.row])
+//        cell.textLabel?.text = acqList[indexPath.row]
+//        cell.detailTextLabel?.text = "This is a memo for " + acqList[indexPath.row]
+//        return cell }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { let cell = tableView.dequeueReusableCell(withIdentifier: "MemoListCell", for: indexPath) as!
+        MemoListTableViewCell
+        let memo = acqList[indexPath.row]
         // Configure the cell...
-        cell.imageView?.image = UIImage(named: acqList[indexPath.row])
-        cell.textLabel?.text = acqList[indexPath.row]
-        cell.detailTextLabel?.text = "This is a memo for " + acqList[indexPath.row]
+        let mImage = memo?.mImage
+        cell.alongImageView.image = mImage
+        cell.memoContent.text = memo?.mContent
+        cell.memoTime.text = memo?.mTime
         return cell }
 
     /*
