@@ -14,6 +14,7 @@
 		765F59921DE7321100877DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765F59901DE7321100877DCC /* Main.storyboard */; };
 		765F59941DE7321100877DCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765F59931DE7321100877DCC /* Assets.xcassets */; };
 		765F59971DE7321100877DCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765F59951DE7321100877DCC /* LaunchScreen.storyboard */; };
+		D250A4B91DE9551500F23696 /* EditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250A4B81DE9551500F23696 /* EditMemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		765F59931DE7321100877DCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		765F59961DE7321100877DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		765F59981DE7321100877DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D250A4B81DE9551500F23696 /* EditMemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				760ACC671DE87F2600F91E14 /* ShowMemoTableViewController.swift */,
+				D250A4B81DE9551500F23696 /* EditMemoViewController.swift */,
 				762123D41DE92DD60034EEE7 /* MemoListTableViewCell.swift */,
 				762123D61DE930C80034EEE7 /* Memo.swift */,
 				765F598C1DE7321100877DCC /* AppDelegate.swift */,
@@ -145,6 +148,7 @@
 				760ACC681DE87F2600F91E14 /* ShowMemoTableViewController.swift in Sources */,
 				762123D71DE930C80034EEE7 /* Memo.swift in Sources */,
 				762123D51DE92DD60034EEE7 /* MemoListTableViewCell.swift in Sources */,
+				D250A4B91DE9551500F23696 /* EditMemoViewController.swift in Sources */,
 				765F598D1DE7321100877DCC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
