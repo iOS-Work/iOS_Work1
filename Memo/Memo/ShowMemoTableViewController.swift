@@ -8,16 +8,27 @@
 
 import UIKit
 
-class ShowMemoTableViewController: UITableViewController {
+class ShowMemoTableViewController: UITableViewController, SearchDelegate{
     
     var acqList = [Memo("Memo1"), Memo("Memo2"), Memo("Memo3"), Memo("Memo4"), Memo("Memo5")]
     
-
+    lazy var search: Search = {
+        let se = Search.init(frame: UIScreen.main.bounds)
+        se.delegate = self
+        return se
+    }()
+    
+    @IBAction func handleSearch(_ sender: Any) {
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(self.search)
+            self.search.animate()
+        }
+    }
+    
     //self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
       
         for memo in acqList {
             if let mContent = memo?.mContent {
@@ -115,5 +126,16 @@ class ShowMemoTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Delegates implementation
+    func didSelectItem(atIndex: Int) {
+        //        self.collectionView.scrollRectToVisible(CGRect.init(origin: CGPoint.init(x: (self.view.bounds.width * CGFloat(atIndex)), y: 0), size: self.view.bounds.size), animated: true)
+        //do something to init
+    }
+    func hideSearchView(status : Bool){
+        if status == true {
+            self.search.removeFromSuperview()
+        }
+    }
 
 }
