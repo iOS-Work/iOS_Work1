@@ -36,14 +36,16 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
         return bv
     }()
     lazy var backButton: UIButton = {
-        let bb = UIButton.init(frame: CGRect.init(x: 0, y: 20, width: 48, height: 48))
-        bb.setBackgroundImage(UIImage.init(named: "cancel"), for: [])
-        bb.addTarget(self, action: #selector(Search.dismiss), for: .touchUpInside)
+        let bb = UIButton.init(frame: CGRect.init(x: 0, y: 20, width: 48, height: 40))
+        bb.setBackgroundImage(UIImage.init(named: "search"), for: [])
+        //cancel search
+//        bb.addTarget(self, action: #selector(Search.dismiss), for: .touchUpInside)
         return bb
     }()
     lazy var searchField: UITextField = {
         let sf = UITextField.init(frame: CGRect.init(x: 48, y: 20, width: self.frame.width - 50, height: 48))
         sf.placeholder = "Seach Memo"
+//        sf.placeholderImageView = ""
         sf.keyboardAppearance = .dark
         return sf
     }()
@@ -96,11 +98,10 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if (self.searchField.text == "" || self.searchField.text == nil) {
-            self.items = ["Memo1","Memo2"]
-            self.tableView.removeFromSuperview()
-        }
-        else{
             self.items = []
+            self.tableView.removeFromSuperview()
+        } else{
+            self.items = ["Memo1","Memo2"]
             DispatchQueue.main.async(execute: {
                 if self.items.count > 0  {
                     self.addSubview(self.tableView)
