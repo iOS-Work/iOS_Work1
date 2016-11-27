@@ -66,19 +66,26 @@
 		765F598B1DE7321100877DCC /* Memo */ = {
 			isa = PBXGroup;
 			children = (
+				D222FCB81DEAD9E7003B3B95 /* ViewControllers */,
 				D24EE0721DE9D61300044C6B /* SupportingView */,
 				D24EE0711DE9D5D300044C6B /* Model */,
-				760ACC671DE87F2600F91E14 /* ShowMemoTableViewController.swift */,
-				D24EE0731DE9D65900044C6B /* Search.swift */,
-				D250A4B81DE9551500F23696 /* EditMemoViewController.swift */,
 				765F598C1DE7321100877DCC /* AppDelegate.swift */,
 				765F59901DE7321100877DCC /* Main.storyboard */,
-				762123D81DE9866F0034EEE7 /* SortTableViewController.swift */,
 				765F59931DE7321100877DCC /* Assets.xcassets */,
 				765F59951DE7321100877DCC /* LaunchScreen.storyboard */,
 				765F59981DE7321100877DCC /* Info.plist */,
 			);
 			path = Memo;
+			sourceTree = "<group>";
+		};
+		D222FCB81DEAD9E7003B3B95 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				760ACC671DE87F2600F91E14 /* ShowMemoTableViewController.swift */,
+				D250A4B81DE9551500F23696 /* EditMemoViewController.swift */,
+				762123D81DE9866F0034EEE7 /* SortTableViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		D24EE0711DE9D5D300044C6B /* Model */ = {
@@ -94,6 +101,7 @@
 			children = (
 				762123FD1DE9940B0034EEE7 /* MemoSortTableViewCell.swift */,
 				762123D41DE92DD60034EEE7 /* MemoListTableViewCell.swift */,
+				D24EE0731DE9D65900044C6B /* Search.swift */,
 			);
 			name = SupportingView;
 			sourceTree = "<group>";
