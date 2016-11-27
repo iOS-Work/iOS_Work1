@@ -10,6 +10,7 @@ import UIKit
 
 class EditMemoViewController: UIViewController {
 
+    @IBOutlet weak var pictureCollectionView: UICollectionView!
     
     @IBAction func getPosition(_ sender: Any) {
         
@@ -24,6 +25,10 @@ class EditMemoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+        //collection view
+        let indexPath = IndexPath(row: 1, section: 0)
+        let cell  = pictureCollectionView.dequeueReusableCell(withReuseIdentifier: "Top", for: indexPath) as! MemoPictureCollectionViewCell
     }
     
 
