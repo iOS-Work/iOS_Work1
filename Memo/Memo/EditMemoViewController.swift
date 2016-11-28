@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-class EditMemoViewController: UIViewController {
+class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
     
+    
+    @IBOutlet weak var positionLabel: UILabel!
     @IBAction func getPosition(_ sender: Any) {
         
     }
@@ -25,6 +29,10 @@ class EditMemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //position
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +40,6 @@ class EditMemoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
         
     }
-    
 
     /*
     // MARK: - Navigation
@@ -43,5 +50,12 @@ class EditMemoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    //MARK: position
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let changeLocation:NSArray =  locations as NSArray
+        let currentLocation = changeLocation.lastObject
+        //latitude, longitude
+        positionLabel.text = "\((currentLocation! as AnyObject).coordinate.latitude, (currentLocation! as AnyObject).coordinate.longitude)"
+    }
 
 }
