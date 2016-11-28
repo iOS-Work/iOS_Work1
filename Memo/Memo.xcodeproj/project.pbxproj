@@ -12,6 +12,7 @@
 		762123D71DE930C80034EEE7 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762123D61DE930C80034EEE7 /* Memo.swift */; };
 		762123D91DE9866F0034EEE7 /* SortTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762123D81DE9866F0034EEE7 /* SortTableViewController.swift */; };
 		762123FE1DE9940B0034EEE7 /* MemoSortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762123FD1DE9940B0034EEE7 /* MemoSortTableViewCell.swift */; };
+		76538CE61DEBE1D3007D3BB2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76538CE51DEBE1D3007D3BB2 /* DetailViewController.swift */; };
 		765F598D1DE7321100877DCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765F598C1DE7321100877DCC /* AppDelegate.swift */; };
 		765F59921DE7321100877DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765F59901DE7321100877DCC /* Main.storyboard */; };
 		765F59941DE7321100877DCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765F59931DE7321100877DCC /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		762123D61DE930C80034EEE7 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		762123D81DE9866F0034EEE7 /* SortTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortTableViewController.swift; sourceTree = "<group>"; };
 		762123FD1DE9940B0034EEE7 /* MemoSortTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoSortTableViewCell.swift; sourceTree = "<group>"; };
+		76538CE51DEBE1D3007D3BB2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		765F59891DE7321100877DCC /* Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		765F598C1DE7321100877DCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		765F59911DE7321100877DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				760ACC671DE87F2600F91E14 /* ShowMemoTableViewController.swift */,
 				D250A4B81DE9551500F23696 /* EditMemoViewController.swift */,
 				762123D81DE9866F0034EEE7 /* SortTableViewController.swift */,
+				76538CE51DEBE1D3007D3BB2 /* DetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				765F598D1DE7321100877DCC /* AppDelegate.swift in Sources */,
 				D24EE0741DE9D65900044C6B /* Search.swift in Sources */,
 				762123D91DE9866F0034EEE7 /* SortTableViewController.swift in Sources */,
+				76538CE61DEBE1D3007D3BB2 /* DetailViewController.swift in Sources */,
 				D222FCBA1DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift in Sources */,
 				762123FE1DE9940B0034EEE7 /* MemoSortTableViewCell.swift in Sources */,
 			);

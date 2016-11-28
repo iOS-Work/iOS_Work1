@@ -127,6 +127,12 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
     }
     */
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail",
+        let indexPath = tableView.indexPathForSelectedRow,
+        let detailViewController = segue.destination as? DetailViewController { detailViewController.memo = acqList[indexPath.row]
+        } }
+    
     //MARK: Delegates implementation
     func didSelectItem(atIndex: Int) {
         //        self.collectionView.scrollRectToVisible(CGRect.init(origin: CGPoint.init(x: (self.view.bounds.width * CGFloat(atIndex)), y: 0), size: self.view.bounds.size), animated: true)

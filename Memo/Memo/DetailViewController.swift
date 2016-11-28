@@ -1,42 +1,48 @@
 //
-//  EditMemoViewController.swift
+//  DetailViewController.swift
 //  Memo
 //
-//  Created by 刘琦 on 2016/11/26.
+//  Created by TaiyangLiu on 2016/11/28.
 //  Copyright © 2016年 Liu. All rights reserved.
 //
 
 import UIKit
 
-class EditMemoViewController: UIViewController {
+class DetailViewController: UIViewController {
 
-    @IBOutlet weak var pictureCollectionView: UICollectionView!
+    var memo: Memo?
     
-    @IBAction func getPosition(_ sender: Any) {
+    @IBOutlet weak var memoContent: UITextView!
+    
+    @IBAction func editMemo(_ sender: UIButton) {
         
+
+            
     }
-    
     @IBAction func cancel(_ sender: UIButton) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two di erent ways.
         if presentingViewController is UINavigationController {
             dismiss(animated: true, completion: nil) } else {
             navigationController!.popViewController(animated: true) }
     }
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
+        memoContent.text = memo?.mContent
+//        if let photo = person?.photo {
+//            photoImageView.image = photo } else {
+//            photoImageView.image = UIImage(named:"photoalbum") }
+//        notesTextView.text = person?.notes
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
-        //collection view
-        let indexPath = IndexPath(row: 1, section: 0)
-        let cell  = pictureCollectionView.dequeueReusableCell(withReuseIdentifier: "Top", for: indexPath) as! MemoPictureCollectionViewCell
     }
     
 
