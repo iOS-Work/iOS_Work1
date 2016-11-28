@@ -11,29 +11,16 @@ import UIKit
 class MemoPictureCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     //MARK: Properties
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var items = [UIImage]()
     
     //MARK: Methods
     func fetchImages()  {
-        let _ = URLSession.shared.dataTask(with: URL.init(string: "http://mexonis.com/subscriptions.json")!) { (data, response, error) in
-            if error != nil {
-                print("Please check your internet connection")
-            } else{
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String]
-                    for item in json {
-                        let image = UIImage.init(named: "search2")!
-                        self.items.append(image)
-                    }
-                } catch _ {
-                    print("error fetching the feed")
-                }
-                DispatchQueue.main.async(execute: {
-                    self.collectionView.reloadData()
-                })
-            }
-            }.resume()
+        //fetch test
+        let image = UIImage.init(named: "search2")!
+        self.items.append(image)
     }
     
     //MARK: CollectionView delegates and datasources

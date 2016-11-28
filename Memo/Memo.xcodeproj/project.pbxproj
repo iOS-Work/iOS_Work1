@@ -20,6 +20,7 @@
 		D222FCBA1DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D222FCB91DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift */; };
 		D24EE0741DE9D65900044C6B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE0731DE9D65900044C6B /* Search.swift */; };
 		D250A4B91DE9551500F23696 /* EditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250A4B81DE9551500F23696 /* EditMemoViewController.swift */; };
+		D27E80E31DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E80E21DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D222FCB91DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		D24EE0731DE9D65900044C6B /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D250A4B81DE9551500F23696 /* EditMemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoViewController.swift; sourceTree = "<group>"; };
+		D27E80E21DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedPictureCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				D250A4B81DE9551500F23696 /* EditMemoViewController.swift */,
 				762123D81DE9866F0034EEE7 /* SortTableViewController.swift */,
 				76538CE51DEBE1D3007D3BB2 /* DetailViewController.swift */,
+				D27E80E21DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27E80E31DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift in Sources */,
 				760ACC681DE87F2600F91E14 /* ShowMemoTableViewController.swift in Sources */,
 				762123D71DE930C80034EEE7 /* Memo.swift in Sources */,
 				762123D51DE92DD60034EEE7 /* MemoListTableViewCell.swift in Sources */,
