@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:barFont] }
         UIApplication.shared.statusBarStyle = .lightContent
         // Override point for customization after application launch.
+        //key
+        
+        AMapServices.shared().apiKey = "e65700d588068f4491d28708b506048d"
         return true
     }
 

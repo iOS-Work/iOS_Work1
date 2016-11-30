@@ -15,9 +15,14 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var positionLabel: UILabel!
-    @IBAction func getPosition(_ sender: Any) {
-        
+    @IBAction func getPosition(_ sender: UIButton) {
+//        pushMapVC()
     }
+    
+//    final func pushMapVC() {
+//        let mapVC = JKMapViewController.init()
+//        self.navigationController?.pushViewController(mapVC, animated: true)
+//    }
     
     @IBAction func cancel(_ sender: UIButton) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two di erent ways.

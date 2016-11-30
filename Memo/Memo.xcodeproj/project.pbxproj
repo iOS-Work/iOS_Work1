@@ -20,6 +20,34 @@
 		D222FCBA1DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D222FCB91DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift */; };
 		D24EE0741DE9D65900044C6B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE0731DE9D65900044C6B /* Search.swift */; };
 		D250A4B91DE9551500F23696 /* EditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250A4B81DE9551500F23696 /* EditMemoViewController.swift */; };
+		D26AF3E61DEE709F009C4FF8 /* FCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF3E51DEE709F009C4FF8 /* FCBaseViewController.swift */; };
+		D26AF3E81DEE70C9009C4FF8 /* JKGlobalDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF3E71DEE70C9009C4FF8 /* JKGlobalDefinition.swift */; };
+		D26AF3FA1DEE76BE009C4FF8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF3F91DEE76BE009C4FF8 /* JavaScriptCore.framework */; };
+		D26AF3FC1DEE76C8009C4FF8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF3FB1DEE76C8009C4FF8 /* AdSupport.framework */; };
+		D26AF3FE1DEE76D1009C4FF8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF3FD1DEE76D1009C4FF8 /* Security.framework */; };
+		D26AF4001DEE76E2009C4FF8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF3FF1DEE76E2009C4FF8 /* libc++.tbd */; };
+		D26AF4021DEE76F4009C4FF8 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4011DEE76F4009C4FF8 /* libstdc++.6.0.9.tbd */; };
+		D26AF4041DEE76FE009C4FF8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4031DEE76FE009C4FF8 /* libz.tbd */; };
+		D26AF4061DEE7709009C4FF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4051DEE7709009C4FF8 /* SystemConfiguration.framework */; };
+		D26AF4081DEE7713009C4FF8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4071DEE7713009C4FF8 /* CoreTelephony.framework */; };
+		D26AF40A1DEE7721009C4FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4091DEE7721009C4FF8 /* OpenGLES.framework */; };
+		D26AF40C1DEE772B009C4FF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF40B1DEE772B009C4FF8 /* QuartzCore.framework */; };
+		D26AF40E1DEE7734009C4FF8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF40D1DEE7734009C4FF8 /* CoreGraphics.framework */; };
+		D26AF4221DEE7ABD009C4FF8 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF41D1DEE7ABD009C4FF8 /* AMapFoundationKit.framework */; };
+		D26AF4231DEE7ABD009C4FF8 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF41E1DEE7ABD009C4FF8 /* AMapLocationKit.framework */; };
+		D26AF4241DEE7ABD009C4FF8 /* AMapNaviKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF41F1DEE7ABD009C4FF8 /* AMapNaviKit.framework */; };
+		D26AF4251DEE7ABD009C4FF8 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4201DEE7ABD009C4FF8 /* AMapSearchKit.framework */; };
+		D26AF4261DEE7ABD009C4FF8 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26AF4211DEE7ABD009C4FF8 /* MAMapKit.framework */; };
+		D26AF4281DEE7ADD009C4FF8 /* AMapNavi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D26AF4271DEE7ADD009C4FF8 /* AMapNavi.bundle */; };
+		D26AF42A1DEE7AF0009C4FF8 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D26AF4291DEE7AF0009C4FF8 /* AMap.bundle */; };
+		D26AF42E1DEE7B49009C4FF8 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF42D1DEE7B49009C4FF8 /* UISearchBarExtension.swift */; };
+		D26AF4321DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF4311DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift */; };
+		D26AF4341DEE7C17009C4FF8 /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF4331DEE7C17009C4FF8 /* UIViewFrameExtension.swift */; };
+		D26AF4361DEE7C33009C4FF8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF4351DEE7C33009C4FF8 /* UIImageExtension.swift */; };
+		D26AF4381DEE7C60009C4FF8 /* JKLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF4371DEE7C60009C4FF8 /* JKLocationTableViewCell.swift */; };
+		D26AF43A1DEE7C7D009C4FF8 /* JKMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF4391DEE7C7D009C4FF8 /* JKMapViewController.swift */; };
+		D26AF43C1DEE7CA2009C4FF8 /* JKMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF43B1DEE7CA2009C4FF8 /* JKMapSearchViewController.swift */; };
+		D26AF43E1DEE7CBF009C4FF8 /* JKLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF43D1DEE7CBF009C4FF8 /* JKLocationManager.swift */; };
 		D27E80E31DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E80E21DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift */; };
 		D27E80E81DECA50200B4A43B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27E80E71DECA50200B4A43B /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +68,35 @@
 		D222FCB91DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		D24EE0731DE9D65900044C6B /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D250A4B81DE9551500F23696 /* EditMemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoViewController.swift; sourceTree = "<group>"; };
+		D26AF3E51DEE709F009C4FF8 /* FCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBaseViewController.swift; sourceTree = "<group>"; };
+		D26AF3E71DEE70C9009C4FF8 /* JKGlobalDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKGlobalDefinition.swift; sourceTree = "<group>"; };
+		D26AF3F91DEE76BE009C4FF8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D26AF3FB1DEE76C8009C4FF8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D26AF3FD1DEE76D1009C4FF8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D26AF3FF1DEE76E2009C4FF8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		D26AF4011DEE76F4009C4FF8 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		D26AF4031DEE76FE009C4FF8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D26AF4051DEE7709009C4FF8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D26AF4071DEE7713009C4FF8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		D26AF4091DEE7721009C4FF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		D26AF40B1DEE772B009C4FF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D26AF40D1DEE7734009C4FF8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D26AF41D1DEE7ABD009C4FF8 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapFoundationKit.framework; path = Memo/AMapFoundationKit.framework; sourceTree = "<group>"; };
+		D26AF41E1DEE7ABD009C4FF8 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = Memo/AMapLocationKit.framework; sourceTree = "<group>"; };
+		D26AF41F1DEE7ABD009C4FF8 /* AMapNaviKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapNaviKit.framework; path = Memo/AMapNaviKit.framework; sourceTree = "<group>"; };
+		D26AF4201DEE7ABD009C4FF8 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = Memo/AMapSearchKit.framework; sourceTree = "<group>"; };
+		D26AF4211DEE7ABD009C4FF8 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = Memo/MAMapKit.framework; sourceTree = "<group>"; };
+		D26AF4271DEE7ADD009C4FF8 /* AMapNavi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMapNavi.bundle; path = Memo/AMapNavi.bundle; sourceTree = "<group>"; };
+		D26AF4291DEE7AF0009C4FF8 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Memo/MAMapKit.framework/AMap.bundle; sourceTree = "<group>"; };
+		D26AF42D1DEE7B49009C4FF8 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISearchBarExtension.swift; path = Memo/UISearchBarExtension.swift; sourceTree = "<group>"; };
+		D26AF4311DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JKNotificationNameExtension.swift; path = Memo/JKNotificationNameExtension.swift; sourceTree = "<group>"; };
+		D26AF4331DEE7C17009C4FF8 /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewFrameExtension.swift; path = Memo/UIViewFrameExtension.swift; sourceTree = "<group>"; };
+		D26AF4351DEE7C33009C4FF8 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = Memo/UIImageExtension.swift; sourceTree = "<group>"; };
+		D26AF4371DEE7C60009C4FF8 /* JKLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JKLocationTableViewCell.swift; path = Memo/JKLocationTableViewCell.swift; sourceTree = "<group>"; };
+		D26AF4391DEE7C7D009C4FF8 /* JKMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JKMapViewController.swift; path = Memo/JKMapViewController.swift; sourceTree = "<group>"; };
+		D26AF43B1DEE7CA2009C4FF8 /* JKMapSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JKMapSearchViewController.swift; path = Memo/JKMapSearchViewController.swift; sourceTree = "<group>"; };
+		D26AF43D1DEE7CBF009C4FF8 /* JKLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JKLocationManager.swift; path = Memo/JKLocationManager.swift; sourceTree = "<group>"; };
+		D26AF4411DEE9945009C4FF8 /* Memo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Memo-Bridging-Header.h"; sourceTree = "<group>"; };
 		D27E80E21DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedPictureCollectionViewController.swift; sourceTree = "<group>"; };
 		D27E80E71DECA50200B4A43B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -49,6 +106,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26AF4221DEE7ABD009C4FF8 /* AMapFoundationKit.framework in Frameworks */,
+				D26AF4231DEE7ABD009C4FF8 /* AMapLocationKit.framework in Frameworks */,
+				D26AF4241DEE7ABD009C4FF8 /* AMapNaviKit.framework in Frameworks */,
+				D26AF4251DEE7ABD009C4FF8 /* AMapSearchKit.framework in Frameworks */,
+				D26AF4261DEE7ABD009C4FF8 /* MAMapKit.framework in Frameworks */,
+				D26AF40E1DEE7734009C4FF8 /* CoreGraphics.framework in Frameworks */,
+				D26AF40C1DEE772B009C4FF8 /* QuartzCore.framework in Frameworks */,
+				D26AF40A1DEE7721009C4FF8 /* OpenGLES.framework in Frameworks */,
+				D26AF4081DEE7713009C4FF8 /* CoreTelephony.framework in Frameworks */,
+				D26AF4061DEE7709009C4FF8 /* SystemConfiguration.framework in Frameworks */,
+				D26AF4041DEE76FE009C4FF8 /* libz.tbd in Frameworks */,
+				D26AF4021DEE76F4009C4FF8 /* libstdc++.6.0.9.tbd in Frameworks */,
+				D26AF4001DEE76E2009C4FF8 /* libc++.tbd in Frameworks */,
+				D26AF3FE1DEE76D1009C4FF8 /* Security.framework in Frameworks */,
+				D26AF3FC1DEE76C8009C4FF8 /* AdSupport.framework in Frameworks */,
+				D26AF3FA1DEE76BE009C4FF8 /* JavaScriptCore.framework in Frameworks */,
 				D27E80E81DECA50200B4A43B /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +151,8 @@
 			children = (
 				D222FCB81DEAD9E7003B3B95 /* ViewControllers */,
 				D24EE0721DE9D61300044C6B /* SupportingView */,
+				D26AF3E11DEE7046009C4FF8 /* Gaode */,
+				D26AF3E41DEE706D009C4FF8 /* Global */,
 				D24EE0711DE9D5D300044C6B /* Model */,
 				765F598C1DE7321100877DCC /* AppDelegate.swift */,
 				765F59901DE7321100877DCC /* Main.storyboard */,
@@ -119,9 +194,69 @@
 			name = SupportingView;
 			sourceTree = "<group>";
 		};
+		D26AF3E11DEE7046009C4FF8 /* Gaode */ = {
+			isa = PBXGroup;
+			children = (
+				D26AF3E31DEE7063009C4FF8 /* Package */,
+				D26AF3E21DEE7057009C4FF8 /* Extension */,
+				D26AF4371DEE7C60009C4FF8 /* JKLocationTableViewCell.swift */,
+				D26AF43D1DEE7CBF009C4FF8 /* JKLocationManager.swift */,
+				D26AF4391DEE7C7D009C4FF8 /* JKMapViewController.swift */,
+				D26AF43B1DEE7CA2009C4FF8 /* JKMapSearchViewController.swift */,
+			);
+			name = Gaode;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D26AF3E21DEE7057009C4FF8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D26AF42D1DEE7B49009C4FF8 /* UISearchBarExtension.swift */,
+				D26AF4311DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift */,
+				D26AF4331DEE7C17009C4FF8 /* UIViewFrameExtension.swift */,
+				D26AF4351DEE7C33009C4FF8 /* UIImageExtension.swift */,
+				D26AF4411DEE9945009C4FF8 /* Memo-Bridging-Header.h */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		D26AF3E31DEE7063009C4FF8 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				D26AF4271DEE7ADD009C4FF8 /* AMapNavi.bundle */,
+				D26AF4291DEE7AF0009C4FF8 /* AMap.bundle */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		D26AF3E41DEE706D009C4FF8 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				D26AF3E51DEE709F009C4FF8 /* FCBaseViewController.swift */,
+				D26AF3E71DEE70C9009C4FF8 /* JKGlobalDefinition.swift */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 		D27E80E61DECA50200B4A43B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D26AF41D1DEE7ABD009C4FF8 /* AMapFoundationKit.framework */,
+				D26AF41E1DEE7ABD009C4FF8 /* AMapLocationKit.framework */,
+				D26AF41F1DEE7ABD009C4FF8 /* AMapNaviKit.framework */,
+				D26AF4201DEE7ABD009C4FF8 /* AMapSearchKit.framework */,
+				D26AF4211DEE7ABD009C4FF8 /* MAMapKit.framework */,
+				D26AF40D1DEE7734009C4FF8 /* CoreGraphics.framework */,
+				D26AF40B1DEE772B009C4FF8 /* QuartzCore.framework */,
+				D26AF4091DEE7721009C4FF8 /* OpenGLES.framework */,
+				D26AF4071DEE7713009C4FF8 /* CoreTelephony.framework */,
+				D26AF4051DEE7709009C4FF8 /* SystemConfiguration.framework */,
+				D26AF4031DEE76FE009C4FF8 /* libz.tbd */,
+				D26AF4011DEE76F4009C4FF8 /* libstdc++.6.0.9.tbd */,
+				D26AF3FF1DEE76E2009C4FF8 /* libc++.tbd */,
+				D26AF3FD1DEE76D1009C4FF8 /* Security.framework */,
+				D26AF3FB1DEE76C8009C4FF8 /* AdSupport.framework */,
+				D26AF3F91DEE76BE009C4FF8 /* JavaScriptCore.framework */,
 				D27E80E71DECA50200B4A43B /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -159,6 +294,7 @@
 				TargetAttributes = {
 					765F59881DE7321100877DCC = {
 						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -186,6 +322,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26AF42A1DEE7AF0009C4FF8 /* AMap.bundle in Resources */,
+				D26AF4281DEE7ADD009C4FF8 /* AMapNavi.bundle in Resources */,
 				765F59971DE7321100877DCC /* LaunchScreen.storyboard in Resources */,
 				765F59941DE7321100877DCC /* Assets.xcassets in Resources */,
 				765F59921DE7321100877DCC /* Main.storyboard in Resources */,
@@ -201,15 +339,25 @@
 			files = (
 				D27E80E31DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift in Sources */,
 				760ACC681DE87F2600F91E14 /* ShowMemoTableViewController.swift in Sources */,
+				D26AF4361DEE7C33009C4FF8 /* UIImageExtension.swift in Sources */,
 				762123D71DE930C80034EEE7 /* Memo.swift in Sources */,
 				762123D51DE92DD60034EEE7 /* MemoListTableViewCell.swift in Sources */,
 				D250A4B91DE9551500F23696 /* EditMemoViewController.swift in Sources */,
+				D26AF43C1DEE7CA2009C4FF8 /* JKMapSearchViewController.swift in Sources */,
 				765F598D1DE7321100877DCC /* AppDelegate.swift in Sources */,
+				D26AF4341DEE7C17009C4FF8 /* UIViewFrameExtension.swift in Sources */,
 				D24EE0741DE9D65900044C6B /* Search.swift in Sources */,
 				762123D91DE9866F0034EEE7 /* SortTableViewController.swift in Sources */,
+				D26AF3E61DEE709F009C4FF8 /* FCBaseViewController.swift in Sources */,
 				76538CE61DEBE1D3007D3BB2 /* DetailViewController.swift in Sources */,
+				D26AF43A1DEE7C7D009C4FF8 /* JKMapViewController.swift in Sources */,
 				D222FCBA1DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift in Sources */,
 				762123FE1DE9940B0034EEE7 /* MemoSortTableViewCell.swift in Sources */,
+				D26AF43E1DEE7CBF009C4FF8 /* JKLocationManager.swift in Sources */,
+				D26AF3E81DEE70C9009C4FF8 /* JKGlobalDefinition.swift in Sources */,
+				D26AF4381DEE7C60009C4FF8 /* JKLocationTableViewCell.swift in Sources */,
+				D26AF4321DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift in Sources */,
+				D26AF42E1DEE7B49009C4FF8 /* UISearchBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,10 +478,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Memo",
+				);
 				INFOPLIST_FILE = Memo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.Memo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Memo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -342,10 +498,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Memo",
+				);
 				INFOPLIST_FILE = Memo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.Memo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Memo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

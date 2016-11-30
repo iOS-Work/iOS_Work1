@@ -418,6 +418,9 @@
                                             <constraint firstAttribute="width" constant="30" id="1D8-Zc-BsO"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="position"/>
+                                        <connections>
+                                            <segue destination="qiL-yE-1aD" kind="presentation" id="gT7-P9-9pG"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwv-nc-LQF">
                                         <rect key="frame" x="30" y="0.0" width="320" height="30"/>
@@ -692,6 +695,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDR-UJ-a41" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2134" y="307"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JHK-zb-Gjr">
+            <objects>
+                <navigationController id="qiL-yE-1aD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DDM-h3-yAO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mw1-GB-CUB" kind="relationship" relationship="rootViewController" id="euE-kX-LOR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="En5-eT-ASz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2134" y="890"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="wQU-5F-PIj">
+            <objects>
+                <viewController id="mw1-GB-CUB" customClass="JKMapViewController" customModule="Memo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Z5-wT-mKa"/>
+                        <viewControllerLayoutGuide type="bottom" id="AE2-38-foI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nGd-LW-qip">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jcS-g7-dzU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0pD-ln-qfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3078" y="890"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="11r-r4-3Ma">
