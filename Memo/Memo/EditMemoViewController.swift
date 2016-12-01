@@ -12,12 +12,14 @@ import CoreLocation
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
 
    
+//    @IBOutlet weak var buttonBlue: UIButton!
     @IBOutlet weak var memoContent: UITextView!
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
     
     @IBOutlet weak var positionLabel: UILabel!
     @IBAction func saveMemo(_ sender: UIButton) {
+        
         if memoContent.text == nil || memoContent.text!.isEmpty {
             let alertController = UIAlertController(title: "Invalid Data", message: "The content cannot be empty", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style:.cancel, handler: nil))
@@ -60,7 +62,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
 //        sleep(3000)
 //        locationManager.stopUpdatingLocation()
-        
+//        buttonBlue.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControlState#>)
     }
 
     override func didReceiveMemoryWarning() {

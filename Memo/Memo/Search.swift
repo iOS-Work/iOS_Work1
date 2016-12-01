@@ -82,6 +82,9 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
     }
     
     func  dismiss()  {
+        searchText = self.searchField.text!
+        searchItems = self.items
+        searchStatus = 1
         self.searchField.text = ""
         self.items.removeAll()
         self.tableView.removeFromSuperview()
@@ -92,6 +95,7 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
         }, completion: {(Bool) in
             self.delegate?.hideSearchView(status: true)
         })
+//        super.reloadInputViews()
     }
     
     //MARK: TextField Delegates
@@ -172,6 +176,22 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchField.text = items[indexPath.row]
+        //选择相应的信息后的返回
+        //隐藏搜索框
+        searchText = self.searchField.text!
+        searchItems = self.items
+        searchStatus = 2
+        self.searchField.text = ""
+        self.items.removeAll()
+        self.tableView.removeFromSuperview()
+        UIView.animate(withDuration: 0.2, animations: {
+            self.backgroundView.alpha = 0
+            self.searchView.alpha = 0
+            self.searchField.resignFirstResponder()
+        }, completion: {(Bool) in
+            self.delegate?.hideSearchView(status: true)
+        })
+//        ShowMemoTableViewController.reloadInputViews(<#T##UIResponder#>)
     }
     
     //MARK: Inits

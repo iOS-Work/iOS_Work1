@@ -23,17 +23,47 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
             window.addSubview(self.search)
             self.search.animate()
         }
+        //不起作用
+//        viewDidLoad()
     }
     
     //self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        //用其他先加一个列表，显示所有信息，然后再看其他
+        var acqAllList = [MemoDataMO]()
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate),
             let fetchedList = appDelegate.fetchContext() {
-            acqList += fetchedList }
-        globalList = acqList
+            //acqList += fetchedList
+            acqAllList += fetchedList
+        }
+        acqList.removeAll()
+        globalList = acqAllList
+        if (searchStatus == 0) {
+            acqList = acqAllList
+        } else if (searchStatus == 1){
+            if searchItems.isEmpty{
+                acqList = acqAllList
+            } else {
+                for list in acqAllList {
+                    for cell in searchItems {
+                        if list.memoContent == cell {
+                            acqList.append(list)
+                        }
+                    }
+                }
+            }
+            
+        } else if (searchStatus == 2){
+            for list in acqAllList {
+                if list.memoContent == searchText {
+                    acqList.append(list)
+                }
+            }
+        } else {
+            acqList = acqAllList
+        }
 //        for memo in acqList {
 //            if let mContent = memo?.mContent {
 //                memo?.mImage = UIImage(named: mContent)
@@ -154,6 +184,10 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         if status == true {
             self.search.removeFromSuperview()
         }
+        print("close")
+        print("\(searchStatus)")
+        viewDidLoad()
+        tableView.reloadData()
     }
 
     @IBAction func unwindToShowMemo(segue:UIStoryboardSegue) {
