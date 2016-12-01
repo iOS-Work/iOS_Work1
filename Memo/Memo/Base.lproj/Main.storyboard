@@ -952,10 +952,10 @@
             </objects>
             <point key="canvasLocation" x="-426.39999999999998" y="856.82158920539734"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Show Time Table View Controller-->
         <scene sceneID="ZYJ-c2-zDZ">
             <objects>
-                <tableViewController id="C0U-9G-0KR" sceneMemberID="viewController">
+                <tableViewController id="C0U-9G-0KR" customClass="ShowTimeTableViewController" customModule="Memo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZDm-kx-9cL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -970,12 +970,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cZ-aE-SFv">
-                                                    <rect key="frame" x="191" y="11" width="47" height="30"/>
-                                                    <state key="normal" title="10:00  "/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V21-tC-0l4">
                                                     <rect key="frame" x="15" y="15" width="87" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYG-8c-kV3">
+                                                    <rect key="frame" x="154" y="15" width="126" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -983,8 +986,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="V21-tC-0l4" firstAttribute="leading" secondItem="um3-RN-Ekc" secondAttribute="leadingMargin" constant="7" id="L3c-w6-Ady"/>
-                                                <constraint firstItem="3cZ-aE-SFv" firstAttribute="leading" secondItem="V21-tC-0l4" secondAttribute="trailing" constant="89" id="X85-Sz-oFR"/>
-                                                <constraint firstItem="3cZ-aE-SFv" firstAttribute="bottom" secondItem="um3-RN-Ekc" secondAttribute="bottomMargin" id="afK-My-JQ5"/>
                                                 <constraint firstItem="V21-tC-0l4" firstAttribute="top" secondItem="um3-RN-Ekc" secondAttribute="topMargin" constant="7" id="sic-z7-JKI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -996,20 +997,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjg-f7-y05">
-                                                    <rect key="frame" x="185" y="11" width="67" height="30"/>
-                                                    <state key="normal" title="11月23日 "/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注日期：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKm-fX-ln4">
                                                     <rect key="frame" x="15" y="15" width="87" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQE-Ek-shw">
+                                                    <rect key="frame" x="154" y="14" width="126" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Rjg-f7-y05" firstAttribute="bottom" secondItem="YbP-KK-kCy" secondAttribute="bottomMargin" id="07D-LQ-B40"/>
-                                                <constraint firstItem="Rjg-f7-y05" firstAttribute="leading" secondItem="HKm-fX-ln4" secondAttribute="trailing" constant="83" id="PHo-XN-kCn"/>
                                                 <constraint firstItem="HKm-fX-ln4" firstAttribute="top" secondItem="YbP-KK-kCy" secondAttribute="topMargin" constant="7" id="Z2j-bQ-aq1"/>
                                                 <constraint firstItem="HKm-fX-ln4" firstAttribute="leading" secondItem="YbP-KK-kCy" secondAttribute="leadingMargin" constant="7" id="hGO-sI-FWE"/>
                                             </constraints>
@@ -1023,51 +1025,14 @@
                             <outlet property="delegate" destination="C0U-9G-0KR" id="Mgn-HJ-c6H"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="dayTextField" destination="NQE-Ek-shw" id="PcN-Ht-Zsg"/>
+                        <outlet property="timeTextField" destination="aYG-8c-kV3" id="QBO-6d-e5X"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xOJ-CK-znZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNA-B2-LnQ">
-                    <rect key="frame" x="0.0" y="0.0" width="180" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="180" id="Aol-3p-UOV"/>
-                    </constraints>
-                    <items>
-                        <navigationItem id="e5t-f5-J5J">
-                            <nil key="title"/>
-                            <leftBarButtonItems>
-                                <barButtonItem width="15" style="plain" id="w9W-FA-14N">
-                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v5T-Ta-GNX">
-                                        <rect key="frame" x="16" y="2" width="10" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="&lt;"/>
-                                    </button>
-                                </barButtonItem>
-                                <barButtonItem image="Memo4" style="plain" id="N06-T2-dQm">
-                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="auJ-WD-Gc5">
-                                        <rect key="frame" x="34" y="2" width="20" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Memo4"/>
-                                    </button>
-                                </barButtonItem>
-                                <barButtonItem style="plain" id="qoP-vi-snE">
-                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1q1-se-BOR">
-                                        <rect key="frame" x="62" y="7" width="83" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="备忘信息"/>
-                                    </button>
-                                </barButtonItem>
-                            </leftBarButtonItems>
-                            <barButtonItem key="rightBarButtonItem" style="plain" id="GC3-ay-raQ">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4DA-nT-5sE">
-                                    <rect key="frame" x="139" y="2" width="25" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="✅"/>
-                                </button>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
             </objects>
-            <point key="canvasLocation" x="190" y="682"/>
+            <point key="canvasLocation" x="189.59999999999999" y="681.85907046476768"/>
         </scene>
     </scenes>
     <resources>

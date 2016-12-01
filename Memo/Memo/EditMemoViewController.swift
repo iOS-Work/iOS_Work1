@@ -133,6 +133,8 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         } else {
             addPhotoButton.setImage(UIImage(named:"addphoto"), for:.normal)
         }
+        
+        
         NetworkStatusListener()
         //memo?.memoContent
         // Do any additional setup after loading the view.
@@ -299,7 +301,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
 
 }
 
-class TimeTableViewController: UITableViewController,UITextFieldDelegate {
+class TimeTableViewController: UITableViewController {
     
     
     @IBOutlet weak var hourTextField: UITextField!

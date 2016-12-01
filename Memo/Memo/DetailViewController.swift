@@ -8,10 +8,12 @@
 
 import UIKit
 
+var time1 = ""
+var day1 = ""
+
 class DetailViewController: UIViewController {
 
-    var memo: MemoDataMO?
-    
+   var memo: MemoDataMO?
     
     @IBOutlet weak var positionButton: UIButton!
     @IBOutlet weak var showPhotoImageView: UIImageView!
@@ -35,8 +37,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        time1 = (memo?.memoTime)!
+        day1 = (memo?.memoDay)!
         globalMemo = memo
         memoContent.text = memo?.memoContent
+        
         
 //        if let photo = person?.photo {
 //            photoImageView.image = photo } else {
@@ -48,6 +53,7 @@ class DetailViewController: UIViewController {
         } else {
             showPhotoImageView.image = UIImage(named:"photoalbum")
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,3 +81,27 @@ class DetailViewController: UIViewController {
     
 
 }
+
+class ShowTimeTableViewController: UITableViewController {
+    
+    
+
+    @IBOutlet weak var dayTextField: UILabel!
+    @IBOutlet weak var timeTextField: UILabel!
+       override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dayTextField.text = day1
+        timeTextField.text = time1
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+        
+    
+}
+
