@@ -10,17 +10,7 @@ import UIKit
 import CoreLocation
 
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
-<<<<<<< HEAD
-    
-    
-    
-    
-=======
 
-   
-//    @IBOutlet weak var buttonBlue: UIButton!
-    @IBOutlet weak var memoContent: UITextView!
->>>>>>> origin/master
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
     @IBOutlet weak var blue: UIButton!
