@@ -84,6 +84,13 @@ class JKMapViewController: FCBaseViewController {
         self.mapView?.desiredAccuracy = kCLLocationAccuracyBest
         self.view.addSubview(self.mapView!)
         
+        
+        let coordinate = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(currentLatitude), longitude: CLLocationDegrees(currentLongitude))
+        self.mapView?.setCenter(coordinate, animated: true)
+//        self.mapViewUpdateAnnotation(withCoordinate: coordinate)
+        JKLOG("come into map")
+        JKLOG("\(currentLatitude)") //信息的对的！！！
+        
         /////////////////////////获取地图信息
 //        self.mapViewUpdateAnnotation(withCoordinate: (mapView?.centerCoordinate)!)
 //        let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(item.location.latitude), longitude: CLLocationDegrees(item.location.longitude))
@@ -113,7 +120,7 @@ class JKMapViewController: FCBaseViewController {
 //        let backItem = UIBarButtonItem.init(title: "recover", style: .plain, target: self, action: #selector(locationToUserPosition(sender:)))
 //        let logItem = UIBarButtonItem.init(title: "save", style: .plain, target: self, action: #selector(printCurrentLocationMessage))
 //        self.navigationItem.rightBarButtonItems = [backItem,logItem]
-    
+//        viewWillAppear(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,6 +188,7 @@ extension JKMapViewController: MAMapViewDelegate{
             self.currentPOI = nil
             self.dataArray.removeAll()
             for poiItem in (regeocode?.pois)!{
+                JKLOG("\(poiItem)")
                 self.dataArray.append(poiItem)
             }
             self.tableView?.reloadData()

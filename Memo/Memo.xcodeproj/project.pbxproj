@@ -21,6 +21,7 @@
 		765F59941DE7321100877DCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765F59931DE7321100877DCC /* Assets.xcassets */; };
 		765F59971DE7321100877DCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 765F59951DE7321100877DCC /* LaunchScreen.storyboard */; };
 		D222FCBA1DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D222FCB91DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift */; };
+		D22FD6A51DF065C600F1BB4C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22FD6A41DF065C600F1BB4C /* Reachability.swift */; };
 		D24EE0741DE9D65900044C6B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE0731DE9D65900044C6B /* Search.swift */; };
 		D250A4B91DE9551500F23696 /* EditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250A4B81DE9551500F23696 /* EditMemoViewController.swift */; };
 		D26AF3E61DEE709F009C4FF8 /* FCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26AF3E51DEE709F009C4FF8 /* FCBaseViewController.swift */; };
@@ -72,6 +73,7 @@
 		765F59961DE7321100877DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		765F59981DE7321100877DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D222FCB91DEADF0D003B3B95 /* MemoPictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoPictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		D22FD6A41DF065C600F1BB4C /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		D24EE0731DE9D65900044C6B /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D250A4B81DE9551500F23696 /* EditMemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoViewController.swift; sourceTree = "<group>"; };
 		D26AF3E51DEE709F009C4FF8 /* FCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBaseViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				D24EE0721DE9D61300044C6B /* SupportingView */,
 				D26AF3E11DEE7046009C4FF8 /* Gaode */,
 				D26AF3E41DEE706D009C4FF8 /* Global */,
+				D22FD6A31DF065A300F1BB4C /* NetworkState */,
 				D24EE0711DE9D5D300044C6B /* Model */,
 				765F598C1DE7321100877DCC /* AppDelegate.swift */,
 				7611F9921DEFE31D0072035D /* Memo.xcdatamodeld */,
@@ -182,6 +185,14 @@
 				D27E80E21DEC99EA00B4A43B /* EmbedPictureCollectionViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D22FD6A31DF065A300F1BB4C /* NetworkState */ = {
+			isa = PBXGroup;
+			children = (
+				D22FD6A41DF065C600F1BB4C /* Reachability.swift */,
+			);
+			name = NetworkState;
 			sourceTree = "<group>";
 		};
 		D24EE0711DE9D5D300044C6B /* Model */ = {
@@ -369,6 +380,7 @@
 				D26AF4381DEE7C60009C4FF8 /* JKLocationTableViewCell.swift in Sources */,
 				7611F9A01DF058E40072035D /* MemoDataMO+CoreDataProperties.swift in Sources */,
 				D26AF4321DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift in Sources */,
+				D22FD6A51DF065C600F1BB4C /* Reachability.swift in Sources */,
 				D26AF42E1DEE7B49009C4FF8 /* UISearchBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

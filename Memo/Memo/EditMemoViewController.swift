@@ -13,7 +13,8 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
 
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
-
+    
+    @IBOutlet weak var positionButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBAction func addPhoto(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -126,16 +127,13 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         } else {
             addPhotoButton.setImage(UIImage(named:"addphoto"), for:.normal)
         }
-       
+        NetworkStatusListener()
         //memo?.memoContent
         // Do any additional setup after loading the view.
         //position
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-//        sleep(3000)
-//        locationManager.stopUpdatingLocation()
-//        buttonBlue.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControlState#>)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
@@ -153,7 +151,6 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         // Dispose of any resources that can be recreated.
         
     }
-
     
     // MARK: - Navigation
 
@@ -228,5 +225,66 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             memo = memo1
         }
     }
+    
+    /***** 网络状态监听部分（开始） *****/
+    // Reachability必须一直存在，所以需要设置为全局变量
+    let reachability = Reachability()!
+    
+    func NetworkStatusListener() {
+        // 1、设置网络状态消息监听 2、获得网络Reachability对象
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            // 3、开启网络状态消息监听
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    // 移除消息通知
+    deinit {
+        // 关闭网络状态消息监听
+        reachability.stopNotifier()
+        // 移除网络状态消息通知
+        NotificationCenter.default.removeObserver(self, name: ReachabilityChangedNotification, object: reachability)
+    }
+    
+    // 主动检测网络状态
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        // 准备获取网络连接信息
+        if reachability.isReachable {
+            // 判断网络连接状态
+            print("网络连接：可用")
+            if reachability.isReachableViaWiFi {
+                // 判断网络连接类型
+                print("连接类型：WiFi")
+            } else {
+                print("连接类型：移动网络")
+            }
+            //定位的button设置为可选
+            positionButton.isEnabled = true
+        } else {
+            print("网络连接：不可用")
+            DispatchQueue.main.async {
+                // 不加这句导致界面还没初始化完成就打开警告框，这样不行
+                self.alert_noNetwrok() // 警告框，提示没有网络
+            }
+            //定位的button设置为不可选
+            positionButton.isEnabled = false
+        }
+    }
+    
+    // 警告框，提示没有连接网络
+    func alert_noNetwrok() -> Void {
+        let alert = UIAlertController(title: "系统提示", message: "网络连接错误，无法正常加载定位", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "确定", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    /***** 网络状态监听部分（结束）*****/
 
 }
+
+
