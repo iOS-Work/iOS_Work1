@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hBS-Fb-xXL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hBS-Fb-xXL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -400,7 +400,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKG-ki-sLs">
                                         <rect key="frame" x="68" y="200" width="239" height="50"/>
                                         <connections>
-                                            <segue destination="gKF-Da-ixM" kind="embed" id="ajW-mf-oXx"/>
+                                            <segue destination="gKF-Da-ixM" kind="embed" id="vxl-Jc-HH1"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -653,7 +653,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-27-YKh">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-27-YKh">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KKg-dE-mna">
@@ -677,7 +677,7 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="lxC-27-YKh" firstAttribute="leading" secondItem="hfO-Uc-Xkw" secondAttribute="leading" id="6KM-Wa-Uxe"/>
-                                    <constraint firstItem="lxC-27-YKh" firstAttribute="top" secondItem="hfO-Uc-Xkw" secondAttribute="topMargin" constant="-47" id="Sf9-m9-8Ff"/>
+                                    <constraint firstItem="lxC-27-YKh" firstAttribute="top" secondItem="hfO-Uc-Xkw" secondAttribute="topMargin" constant="-8" id="Sf9-m9-8Ff"/>
                                     <constraint firstAttribute="bottom" secondItem="lxC-27-YKh" secondAttribute="bottom" id="gO0-JG-48C"/>
                                     <constraint firstAttribute="trailing" secondItem="lxC-27-YKh" secondAttribute="trailing" id="nwx-cQ-BkZ"/>
                                 </constraints>
@@ -1034,7 +1034,7 @@
         <image name="sort" width="31" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aFc-oZ-JMh"/>
         <segue reference="pHO-6N-RM9"/>
+        <segue reference="aFc-oZ-JMh"/>
     </inferredMetricsTieBreakers>
 </document>

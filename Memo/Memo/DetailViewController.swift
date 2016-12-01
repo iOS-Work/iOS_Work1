@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    var memo: Memo?
+    var memo: MemoDataMO?
     
     @IBOutlet weak var memoContent: UITextView!
     
@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         
-        memoContent.text = memo?.mContent
+        memoContent.text = memo?.memoContent
 //        if let photo = person?.photo {
 //            photoImageView.image = photo } else {
 //            photoImageView.image = UIImage(named:"photoalbum") }
@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -54,6 +54,6 @@ class DetailViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

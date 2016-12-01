@@ -10,8 +10,8 @@ import UIKit
 
 class ShowMemoTableViewController: UITableViewController, SearchDelegate{
     
-    var acqList = [Memo("Memo1"), Memo("Memo2"), Memo("Memo3"), Memo("Memo4"), Memo("Memo5")]
-    
+    //var acqList = [Memo("Memo1"), Memo("Memo2"), Memo("Memo3"), Memo("Memo4"), Memo("Memo5")]
+    var acqList = [MemoDataMO]()
     lazy var search: Search = {
         let se = Search.init(frame: UIScreen.main.bounds)
         se.delegate = self
@@ -30,11 +30,11 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        for memo in acqList {
-            if let mContent = memo?.mContent {
-                memo?.mImage = UIImage(named: mContent)
-                memo?.mTime = "11.26"
-            } }
+//        for memo in acqList {
+//            if let mContent = memo?.mContent {
+//                memo?.mImage = UIImage(named: mContent)
+//                memo?.mTime = "11.26"
+//            } }
         //self.navigationController?.navigationBar.barTintColor = UIColor.white
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,10 +76,10 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         MemoListTableViewCell
         let memo = acqList[indexPath.row]
         // Configure the cell...
-        let mImage = memo?.mImage
-        cell.alongImageView.image = mImage
-        cell.memoContent.text = memo?.mContent
-        cell.memoTime.text = memo?.mTime
+       // let mImage = memo?.mImage
+        cell.alongImageView.image = UIImage(data: memo.memoImage!)
+        cell.memoContent.text = memo.memoContent
+        //cell.memoTime.text = String(describing: memo.memoDay) + String(describing: memo.memoTime)
         return cell }
 
     /*
