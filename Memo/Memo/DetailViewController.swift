@@ -12,6 +12,9 @@ class DetailViewController: UIViewController {
 
     var memo: MemoDataMO?
     
+    
+    @IBOutlet weak var positionButton: UIButton!
+    @IBOutlet weak var showPhotoImageView: UIImageView!
     @IBOutlet weak var memoContent: UITextView!
     
     @IBAction func editMemo(_ sender: UIButton) {
@@ -40,6 +43,11 @@ class DetailViewController: UIViewController {
 //            photoImageView.image = UIImage(named:"photoalbum") }
 //        notesTextView.text = person?.notes
         // Do any additional setup after loading the view.
+        if let photoData = memo?.memoImage {
+            showPhotoImageView.image = UIImage(data: photoData)
+        } else {
+            showPhotoImageView.image = UIImage(named:"photoalbum")
+        }
     }
 
     override func didReceiveMemoryWarning() {

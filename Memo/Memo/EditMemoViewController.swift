@@ -9,10 +9,22 @@
 import UIKit
 import CoreLocation
 
-class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
+class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
+
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBAction func addPhoto(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            present(imagePicker, animated: true, completion: nil)
+        }
+        
+    }
     var colorChoose: String? = "blue"
     @IBOutlet weak var blue: UIButton!
     
@@ -108,6 +120,13 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
         memo = globalMemo
         memoContent.text = memo?.memoContent
         }
+        
+        if let photoData = memo?.memoImage {
+            addPhotoButton.setImage(UIImage(data: photoData), for:.normal)
+        } else {
+            addPhotoButton.setImage(UIImage(named:"addphoto"), for:.normal)
+        }
+       
         //memo?.memoContent
         // Do any additional setup after loading the view.
         //position
@@ -119,6 +138,16 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
 //        buttonBlue.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControlState#>)
     }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            addPhotoButton.setImage(selectedImage, for:.normal)
+            //addPhotoButton.contentMode = .scaleAspectFill
+            //addPhotoButton.clipsToBounds = true
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -137,13 +166,13 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
             AppDelegate) {
             let content = memoContent.text
             let color = colorChoose
-            //let photo = photoImageView.image
+            let photo = addPhotoButton.image(for: .normal)
             //let notes = notesTextView.text
             
             if memo == nil { // add a new entry
-                self.memo = appDelegate.addToContext(memoContent: content!,memoColor: color)
+                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,memoColor: color)
             } else { // updating the existing entry
-                appDelegate.updateToContext(memo: memo!, content: content!)
+                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,memoColor: color)
             }
             }
 

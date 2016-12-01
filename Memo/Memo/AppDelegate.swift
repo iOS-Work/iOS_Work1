@@ -94,9 +94,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    func addToContext(memoContent: String, memoColor: String?) -> MemoDataMO {
+    func addToContext(memoContent: String, photo: UIImage?, memoColor: String?) -> MemoDataMO {
         let memo = MemoDataMO(context: persistentContainer.viewContext)
         memo.memoContent = memoContent
+        if let photo = photo {
+            if photo == nil {
+                memo.memoImage = UIImagePNGRepresentation(UIImage(named: "photoalbum")!)
+            } else {
+            memo.memoImage = UIImagePNGRepresentation(photo)
+            }
+        }
         memo.memoColor = memoColor
 //        if let photo = photo {
 //            person.photo = UIImagePNGRepresentation(photo) }
@@ -122,8 +129,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveContext()
     }
 
-    func updateToContext(memo: MemoDataMO, content: String) {
+    func updateToContext(memo: MemoDataMO, content: String,photo: UIImage?, memoColor: String?) {
         memo.memoContent = content
+        if let mPhoto = photo {
+            if mPhoto == nil {
+                memo.memoImage = UIImagePNGRepresentation(UIImage(named: "photoalbum")!)
+            } else {
+            memo.memoImage = UIImagePNGRepresentation(mPhoto)
+            }
+        }
+        memo.memoColor = memoColor
         print("updating the person to context ...")
         saveContext() }
 
