@@ -385,30 +385,15 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rss-SM-QqE">
-                                <rect key="frame" x="3" y="72" width="375" height="250"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y4P-Ww-rcv">
-                                        <rect key="frame" x="13" y="0.0" width="349" height="200"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="GNJ-X2-hgc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKG-ki-sLs">
-                                        <rect key="frame" x="68" y="200" width="239" height="50"/>
-                                        <connections>
-                                            <segue destination="gKF-Da-ixM" kind="embed" id="vxl-Jc-HH1"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y4P-Ww-rcv">
+                                <rect key="frame" x="16" y="64" width="343" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Y4P-Ww-rcv" firstAttribute="leading" secondItem="Rss-SM-QqE" secondAttribute="leading" constant="13" id="8aF-sN-5aT"/>
-                                    <constraint firstItem="ZKG-ki-sLs" firstAttribute="leading" secondItem="Rss-SM-QqE" secondAttribute="leading" constant="68" id="mPO-Nj-7Rx"/>
+                                    <constraint firstAttribute="height" constant="200" id="GNJ-X2-hgc"/>
                                 </constraints>
-                            </stackView>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2j-UX-yoj">
                                 <rect key="frame" x="16" y="348" width="350" height="30"/>
                                 <subviews>
@@ -464,13 +449,19 @@
                                                     <constraint firstAttribute="width" constant="75" id="tp0-3f-GOA"/>
                                                 </constraints>
                                                 <state key="normal" image="button1"/>
+                                                <connections>
+                                                    <action selector="blueMemo:" destination="6G2-7d-jDB" eventType="touchUpInside" id="PIJ-fH-d0q"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-Is-u1Z">
                                                 <rect key="frame" x="75" y="0.0" width="75" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="nYb-Gz-i3x"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="buton2"/>
+                                                <state key="normal" title="Button" image="button2"/>
+                                                <connections>
+                                                    <action selector="purpleMemo:" destination="6G2-7d-jDB" eventType="touchUpInside" id="w0G-2U-tlg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI6-9J-bh0">
                                                 <rect key="frame" x="150" y="0.0" width="75" height="50"/>
@@ -478,6 +469,9 @@
                                                     <constraint firstAttribute="width" constant="75" id="AzY-pQ-iCa"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="button3"/>
+                                                <connections>
+                                                    <action selector="greenMemo:" destination="6G2-7d-jDB" eventType="touchUpInside" id="0cq-KG-Wd2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWH-9H-5On">
                                                 <rect key="frame" x="225" y="0.0" width="75" height="50"/>
@@ -485,6 +479,9 @@
                                                     <constraint firstAttribute="width" constant="75" id="O54-At-TCd"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="button4"/>
+                                                <connections>
+                                                    <action selector="yellowMemo:" destination="6G2-7d-jDB" eventType="touchUpInside" id="5SG-ba-0Oz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QS-iH-a1j">
                                                 <rect key="frame" x="300" y="0.0" width="78" height="50"/>
@@ -493,6 +490,9 @@
                                                     <constraint firstAttribute="width" constant="78" id="RJ2-A4-M1a"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="button5"/>
+                                                <connections>
+                                                    <action selector="redMemo:" destination="6G2-7d-jDB" eventType="touchUpInside" id="apn-cc-6JV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -504,22 +504,30 @@
                                     <constraint firstAttribute="trailing" secondItem="eXq-FS-v6O" secondAttribute="trailing" constant="254" id="0ey-HE-c0L"/>
                                 </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Eaz-da-HNm">
+                                <rect key="frame" x="16" y="290" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2TS-VV-qvp"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="i2j-UX-yoj" firstAttribute="top" secondItem="Rss-SM-QqE" secondAttribute="bottom" constant="26" id="B1b-TF-WFh"/>
                             <constraint firstAttribute="trailing" secondItem="PNF-gw-Ymi" secondAttribute="trailing" id="BAS-bR-UbF"/>
+                            <constraint firstItem="Y4P-Ww-rcv" firstAttribute="centerX" secondItem="Eaz-da-HNm" secondAttribute="centerX" constant="146.5" id="GTJ-jK-Jul"/>
                             <constraint firstItem="i2j-UX-yoj" firstAttribute="leading" secondItem="V7Y-GN-eyw" secondAttribute="leadingMargin" id="Gel-gU-BpI"/>
                             <constraint firstItem="lZV-fa-x53" firstAttribute="leading" secondItem="V7Y-GN-eyw" secondAttribute="leadingMargin" constant="-16" id="Hmv-6u-GNn"/>
                             <constraint firstItem="Hyl-AC-eJ5" firstAttribute="top" secondItem="lZV-fa-x53" secondAttribute="bottom" constant="48" id="JiB-Ox-CRF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rss-SM-QqE" secondAttribute="trailing" constant="-19" id="LHk-lf-dhG"/>
                             <constraint firstItem="uaA-xX-D4F" firstAttribute="top" secondItem="V7Y-GN-eyw" secondAttribute="top" id="Qlc-nQ-IeW"/>
-                            <constraint firstItem="Rss-SM-QqE" firstAttribute="top" secondItem="zHB-gM-647" secondAttribute="bottom" constant="8" symbolic="YES" id="TPs-2q-T8X"/>
                             <constraint firstItem="PNF-gw-Ymi" firstAttribute="leading" secondItem="V7Y-GN-eyw" secondAttribute="leading" id="Wig-ks-Ddi"/>
-                            <constraint firstItem="Rss-SM-QqE" firstAttribute="leading" secondItem="V7Y-GN-eyw" secondAttribute="leadingMargin" constant="-13" id="gJQ-FU-So6"/>
-                            <constraint firstAttribute="bottom" secondItem="Rss-SM-QqE" secondAttribute="bottom" constant="345" id="gOV-Q2-5Jt"/>
+                            <constraint firstItem="Y4P-Ww-rcv" firstAttribute="centerX" secondItem="PNF-gw-Ymi" secondAttribute="centerX" id="a1U-Hl-Rmn"/>
                             <constraint firstItem="uaA-xX-D4F" firstAttribute="leading" secondItem="V7Y-GN-eyw" secondAttribute="leading" id="hZi-2S-cjq"/>
+                            <constraint firstItem="Y4P-Ww-rcv" firstAttribute="leading" secondItem="i2j-UX-yoj" secondAttribute="leading" id="lKI-k1-6vm"/>
+                            <constraint firstItem="PNF-gw-Ymi" firstAttribute="top" secondItem="i2j-UX-yoj" secondAttribute="bottom" constant="17" id="tgo-LV-ssX"/>
+                            <constraint firstItem="Eaz-da-HNm" firstAttribute="top" secondItem="Y4P-Ww-rcv" secondAttribute="bottom" constant="26" id="ueS-Of-diW"/>
+                            <constraint firstItem="Eaz-da-HNm" firstAttribute="centerY" secondItem="V7Y-GN-eyw" secondAttribute="centerY" constant="-18.5" id="vTH-qn-cuD"/>
                             <constraint firstItem="PNF-gw-Ymi" firstAttribute="top" secondItem="V7Y-GN-eyw" secondAttribute="top" constant="395" id="vcx-T8-P21"/>
+                            <constraint firstItem="Y4P-Ww-rcv" firstAttribute="top" secondItem="zHB-gM-647" secondAttribute="bottom" id="wQH-4W-iNx"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -551,8 +559,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="blue" destination="KbK-5f-wpy" id="zfc-gW-ZX9"/>
+                        <outlet property="green" destination="JI6-9J-bh0" id="rG7-4j-gG3"/>
                         <outlet property="memoContent" destination="Y4P-Ww-rcv" id="OKJ-Gg-vQg"/>
                         <outlet property="positionLabel" destination="mwv-nc-LQF" id="m62-l4-Lvp"/>
+                        <outlet property="purple" destination="A1X-Is-u1Z" id="RIF-xh-6nn"/>
+                        <outlet property="red" destination="7QS-iH-a1j" id="RNQ-hW-ANE"/>
+                        <outlet property="yellow" destination="YWH-9H-5On" id="jin-B8-Pug"/>
                         <segue destination="u7N-zq-Xg0" kind="unwind" identifier="unwindToShowMemo" unwindAction="unwindToShowMemoWithSegue:" id="5rv-P4-HJn"/>
                     </connections>
                 </viewController>
@@ -641,8 +654,8 @@
         <scene sceneID="MAE-SM-d9E">
             <objects>
                 <collectionViewController id="gKF-Da-ixM" customClass="EmbedPictureCollectionViewController" customModule="Memo" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1fo-9y-Nvv">
-                        <rect key="frame" x="0.0" y="0.0" width="239" height="50"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="1fo-9y-Nvv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QYv-C8-Wjo">
@@ -1079,8 +1092,9 @@
         <image name="29return" width="177" height="177"/>
         <image name="32return" width="42" height="32"/>
         <image name="Memo4" width="18" height="22"/>
-        <image name="buton2" width="80" height="50"/>
+        <image name="addphoto" width="67" height="67"/>
         <image name="button1" width="80" height="50"/>
+        <image name="button2" width="80" height="50"/>
         <image name="button3" width="80" height="50"/>
         <image name="button4" width="80" height="50"/>
         <image name="button5" width="80" height="50"/>

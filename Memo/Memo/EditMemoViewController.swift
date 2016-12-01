@@ -10,11 +10,68 @@ import UIKit
 import CoreLocation
 
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
-
-   
-    @IBOutlet weak var memoContent: UITextView!
+    
+    
+    
+    
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
+    @IBOutlet weak var blue: UIButton!
+    
+    @IBOutlet weak var red: UIButton!
+    @IBOutlet weak var yellow: UIButton!
+    @IBOutlet weak var green: UIButton!
+    @IBOutlet weak var purple: UIButton!
+    @IBAction func blueMemo(_ sender: UIButton) {
+        memo?.memoColor = 0
+        
+        blue.setImage(UIImage(named:"blue"), for:.normal)
+        purple.setImage(UIImage(named:"button2"), for:.normal)
+        green.setImage(UIImage(named:"button3"), for:.normal)
+        yellow.setImage(UIImage(named:"button4"), for:.normal)
+        red.setImage(UIImage(named:"button5"), for:.normal)
+    }
+    
+    
+    @IBAction func purpleMemo(_ sender: UIButton) {
+        memo?.memoColor = 1
+        blue.setImage(UIImage(named:"button1"), for:.normal)
+        purple.setImage(UIImage(named:"purple"), for:.normal)
+        green.setImage(UIImage(named:"button3"), for:.normal)
+        yellow.setImage(UIImage(named:"button4"), for:.normal)
+        red.setImage(UIImage(named:"button5"), for:.normal)
+    }
+    
+    
+    @IBAction func greenMemo(_ sender: UIButton) {
+        memo?.memoColor = 2
+        blue.setImage(UIImage(named:"button1"), for:.normal)
+        purple.setImage(UIImage(named:"button2"), for:.normal)
+        green.setImage(UIImage(named:"green"), for:.normal)
+        yellow.setImage(UIImage(named:"button4"), for:.normal)
+        red.setImage(UIImage(named:"button5"), for:.normal)
+    }
+    
+    @IBAction func yellowMemo(_ sender: UIButton) {
+        memo?.memoColor = 3
+        blue.setImage(UIImage(named:"button1"), for:.normal)
+        purple.setImage(UIImage(named:"button2"), for:.normal)
+        green.setImage(UIImage(named:"button3"), for:.normal)
+        yellow.setImage(UIImage(named:"yellow"), for:.normal)
+        red.setImage(UIImage(named:"button5"), for:.normal)
+    }
+    
+    @IBAction func redMemo(_ sender: UIButton) {
+        memo?.memoColor = 4
+        blue.setImage(UIImage(named:"button1"), for:.normal)
+        purple.setImage(UIImage(named:"button2"), for:.normal)
+        green.setImage(UIImage(named:"button3"), for:.normal)
+        yellow.setImage(UIImage(named:"button4"), for:.normal)
+        red.setImage(UIImage(named:"red"), for:.normal)
+    }
+   
+    @IBOutlet weak var memoContent: UITextView!
+    
     
     @IBOutlet weak var positionLabel: UILabel!
     @IBAction func saveMemo(_ sender: UIButton) {
