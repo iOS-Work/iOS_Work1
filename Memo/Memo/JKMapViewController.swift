@@ -27,6 +27,7 @@ class JKMapViewController: FCBaseViewController {
     
     //return without save action
     @IBAction func backAction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "unwindToList", sender: self)
         
     }
     
@@ -307,4 +308,9 @@ extension JKMapViewController: AMapSearchDelegate {
         self.tableView?.reloadData()
         self.tableView?.selectRow(at: NSIndexPath.init(row: 0, section: 0) as IndexPath, animated: true, scrollPosition: .bottom)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController. // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindToList" {}}
+   
 }

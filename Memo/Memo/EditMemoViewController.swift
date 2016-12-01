@@ -62,5 +62,10 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
         //latitude, longitude
         positionLabel.text = "\((currentLocation! as AnyObject).coordinate.latitude, (currentLocation! as AnyObject).coordinate.longitude)"
     }
+    @IBAction func unwindToList(segue:UIStoryboardSegue) {
+        if segue.identifier == "unwindToList" {
+            
+        }
+    }
 
 }
