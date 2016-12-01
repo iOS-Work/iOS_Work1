@@ -59,7 +59,7 @@ class JKLocationManager: NSObject,AMapLocationManagerDelegate {
     
     
     private func initialization() {
-        self.userLocation = CLLocationCoordinate2D.init(latitude: currentLatitude, longitude: currentLongitude)
+        self.userLocation = CLLocationCoordinate2D.init(latitude: 0, longitude: 0)
     }
     
     ///  获取定位信息

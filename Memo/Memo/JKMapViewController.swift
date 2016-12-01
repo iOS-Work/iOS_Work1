@@ -18,6 +18,7 @@ class JKMapViewController: FCBaseViewController {
     var searchController: UISearchController?
     var searchResultsController: JKMapSearchViewController?
     var flagView: UIView?
+    var chosenPosition: String = ""
     
         lazy var searchAPI: AMapSearchAPI = {
             let search = AMapSearchAPI.init()
@@ -28,12 +29,6 @@ class JKMapViewController: FCBaseViewController {
     //return without save action
     @IBAction func backAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "unwindToList", sender: self)
-        
-    }
-    
-     //!!!!!!!!!!!!!!!!!修改为保存信息并且返回
-    //save position action
-    @IBAction func saveAction(_ sender: UIBarButtonItem) {
         
     }
     
@@ -91,6 +86,7 @@ class JKMapViewController: FCBaseViewController {
         JKLOG("come into map")
         JKLOG("\(currentLatitude)") //信息的对的！！！
         
+        //初始化也应该加上选择的位置是当前位置！！！！！！！！
         /////////////////////////获取地图信息
 //        self.mapViewUpdateAnnotation(withCoordinate: (mapView?.centerCoordinate)!)
 //        let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(item.location.latitude), longitude: CLLocationDegrees(item.location.longitude))
@@ -116,11 +112,7 @@ class JKMapViewController: FCBaseViewController {
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         self.view .addSubview(self.tableView!)
-        
-//        let backItem = UIBarButtonItem.init(title: "recover", style: .plain, target: self, action: #selector(locationToUserPosition(sender:)))
-//        let logItem = UIBarButtonItem.init(title: "save", style: .plain, target: self, action: #selector(printCurrentLocationMessage))
-//        self.navigationItem.rightBarButtonItems = [backItem,logItem]
-//        viewWillAppear(true)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,14 +132,6 @@ class JKMapViewController: FCBaseViewController {
         sender?.isSelected = true
         self.mapView?.setCenter((self.mapView?.userLocation.coordinate)!, animated: true)
     }
-    
-    //!!!!!!!!!!!!!!!!!修改为保存信息并且返回
-    final func printCurrentLocationMessage() {
-        
-        //!!!!!!!!!!!!!!!!!修改为保存信息并且返回
-        
-    }
-
     
     final func didReceive(notification: Notification) {
         self.jk_popViewController(animated: true)
@@ -239,7 +223,7 @@ extension JKMapViewController: UITableViewDelegate,UITableViewDataSource{
             self.currentPOI = item
             let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(item.location.latitude), longitude: CLLocationDegrees(item.location.longitude))
             self.mapView?.setCenter(location, animated: true)
-            
+            chosenPosition = item.name
         }
     }
 }
@@ -247,11 +231,12 @@ extension JKMapViewController: UITableViewDelegate,UITableViewDataSource{
 
 extension JKMapViewController: JKMapSearchViewControllerDelegate {
     // 选中搜索的结果
-    func jkMapSearchViewController(didSelected item: AMapTip) {
+    func jkMapSearchViewController(didSelected item: AMapTip, addr: String) {
         self.searchController?.isActive = false
         let coordinate = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(item.location.latitude), longitude: CLLocationDegrees(item.location.longitude))
         self.mapView?.setCenter(coordinate, animated: true)
         self.mapViewUpdateAnnotation(withCoordinate: coordinate)
+        chosenPosition = addr
     }
 }
 
@@ -319,6 +304,12 @@ extension JKMapViewController: AMapSearchDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController. // Pass the selected object to the new view controller.
-        if segue.identifier == "unwindToList" {}}
+        if segue.identifier == "unwindToList" {
+            
+        } else if segue.identifier == "unwindSaveToList", let editMemoViewController = segue.destination as? EditMemoViewController {
+            print("\(chosenPosition)")
+            editMemoViewController.positionInfo = chosenPosition
+        }
+    }
    
 }

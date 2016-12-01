@@ -16,8 +16,8 @@ var day = ""
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let locationManager = CLLocationManager()
-    var memo : MemoDataMO?
-    
+    var memo: MemoDataMO?
+    var positionInfo: String = ""
     
     @IBOutlet weak var positionButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -176,6 +176,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             let mDay = day
             print(time)
             print(day)
+//            -> [Int] print(TimeTableViewController.getTime(TimeTableViewController.init())
             //let notes = notesTextView.text
             
             if memo == nil { // add a new entry
@@ -187,49 +188,65 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
 
     }
     
+    lazy var geocoder : CLGeocoder = { return CLGeocoder.init() }()
+    
     //MARK: position
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let changeLocation:NSArray =  locations as NSArray
         let currentLocation = changeLocation.lastObject
         //latitude, longitude
-        currentLatitude = (currentLocation! as AnyObject).coordinate.latitude
-        currentLongitude = (currentLocation! as AnyObject).coordinate.longitude
-        //////////////
-        var showList = [AMapPOI]()
-        JKLocationManager.shared.jkReverseGeocoder(location: (currentLocation! as AnyObject).coordinate) { (reGeocode, error) in
-            if (error != nil) {
-                JKLOG(error?.localizedDescription)
-                print ("location1: "+"\(currentPosition)")
-            } else {
-                for poiItem in (reGeocode?.pois)!{
-                    showList.append(poiItem)
-                }
-                var addr = ""
-                for cell in showList {
-                    addr += cell.name
-                }
-                
-//                let item: AMapPOI = showList[indexPath.row] as! AMapPOI
-//                cell.textLabel?.text = item.name
-//                cell.detailTextLabel?.text = item.address
-                
-//                var addr = reGeocode?.formattedAddress
-                currentPosition = addr
-//                currentPosition = (reGeocode?.addressComponent.city)!
-                JKLOG("\(reGeocode?.formattedAddress)\n\(reGeocode?.addressComponent)")
-                print ("location2: "+"\(currentPosition)")
-            }
-        }
+        currentLatitude = (currentLocation as AnyObject).coordinate.latitude
+        currentLongitude = (currentLocation as AnyObject).coordinate.longitude
         
-        positionLabel.text = "\(currentPosition)"
-//        locationManager.stopUpdatingLocation()
+        
+//        self.geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//            completionHandler(placemarks?.last,error)
+        //////////////
+//        var showList = [AMapPOI]()
+//        JKLocationManager.shared.jkReverseGeocoder(location: (currentLocation as AnyObject).coordinate) { (reGeocode, error) in
+//            if (error != nil) {
+//                JKLOG(error?.localizedDescription)
+//                print ("location1: "+"\(currentPosition)")
+//            } else {
+//                for poiItem in (reGeocode?.pois)!{
+//                    print ("pois")
+//                    print (poiItem)
+//                    showList.append(poiItem)
+//                }
+//                var addr = ""
+//                for cell in showList {
+//                    addr += cell.name
+//                }
+//                
+////                let item: AMapPOI = showList[indexPath.row] as! AMapPOI
+//                currentPosition = addr
+////                currentPosition = (reGeocode?.addressComponent.city)!
+//                JKLOG("\(reGeocode?.formattedAddress)\n\(reGeocode?.addressComponent)")
+//                print ("location2: "+"\(currentPosition)")
+//            }
+//        }
+        
+        positionLabel.text = "\(currentLatitude)"
+        //只调用一次，获取地图之后就可以更新了
+        locationManager.stopUpdatingLocation()
         ////////////////
     }
     @IBAction func unwindToList(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindToList" {
-            
+//            positionLabel.text = positionInfo
+            print("aaa")
         }
     }
+    
+    @IBAction func unwindSaveToList(segue:UIStoryboardSegue) {
+        if segue.identifier == "unwindSaveToList" {
+            if positionInfo != "" {
+                positionLabel.text = positionInfo
+            }
+            print("bbb")
+        }
+    }
+    
     @IBAction func unwindToEditMemo(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindToEditMemo" ,
             let detailViewController = segue.destination as? DetailViewController,
@@ -316,7 +333,6 @@ class TimeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         let i = getTimes()
         
@@ -337,6 +353,7 @@ class TimeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    
     func getTimes() -> [Int] {
         
         var timers: [Int] = [] //  返回的数组
@@ -355,6 +372,19 @@ class TimeTableViewController: UITableViewController {
         
         return timers;
     }
-  
+    
+//    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddView.textChanges), name: UITextFieldTextDidChangeNotification, object: nil)
+    
+    
+    final func getTime()  -> [String]{
+        if self.hourTextField.text != "" {
+            time = hourTextField.text! + ":" + minuteTextField.text!
+            day = yearTextField.text! + "年" + monthTextField.text! + "月" + dayTextField.text! + "日"
+        }
+        
+        print("内容变化所触发")
+        return [time];
+    }
+    
 
  }

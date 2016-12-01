@@ -13,6 +13,7 @@ class JKMapSearchViewController: UITableViewController {
     lazy var searchResults = {
         return [AnyObject]()
     }()
+    var chosenAddr = ""
     
     // 代理
     weak open var delegate: JKMapSearchViewControllerDelegate?
@@ -60,7 +61,8 @@ class JKMapSearchViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tip = self.searchResults[indexPath.row]
-        self.delegate?.jkMapSearchViewController(didSelected: tip as! AMapTip)
+        chosenAddr = self.searchResults[indexPath.row].district
+        self.delegate?.jkMapSearchViewController(didSelected: tip as! AMapTip, addr: chosenAddr)
     }
     
     /*
@@ -86,6 +88,6 @@ class JKMapSearchViewController: UITableViewController {
 
 // protocol
 public protocol JKMapSearchViewControllerDelegate: NSObjectProtocol {
-    func jkMapSearchViewController(didSelected item: AMapTip)
+    func jkMapSearchViewController(didSelected item: AMapTip, addr: String)
     
 }
