@@ -128,6 +128,13 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         } else {
             cell.alongImageView.image = UIImage(named: "button5")
         }
+        if memo.memoDay == nil || memo.memoTime == nil{
+            memo.memoDay = ""
+            memo.memoTime = ""
+            cell.memoTime.text = memo.memoDay! + "  " + memo.memoTime!
+        } else {
+        cell.memoTime.text = memo.memoDay! + "  " + memo.memoTime!
+        }
         //cell.memoTime.text = String(describing: memo.memoDay) + String(describing: memo.memoTime)
         return cell }
 

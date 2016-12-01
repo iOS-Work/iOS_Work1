@@ -9,10 +9,15 @@
 import UIKit
 import CoreLocation
 
+
+var time = ""
+var day = ""
+
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let locationManager = CLLocationManager()
-    var memo: MemoDataMO?
+    var memo : MemoDataMO?
+    
     
     @IBOutlet weak var positionButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -119,6 +124,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         super.viewDidLoad()
         if gmStatus == 1{
         memo = globalMemo
+        
         memoContent.text = memo?.memoContent
         }
         
@@ -164,12 +170,16 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             let content = memoContent.text
             let color = colorChoose
             let photo = addPhotoButton.image(for: .normal)
+            let mTime = time
+            let mDay = day
+            print(time)
+            print(day)
             //let notes = notesTextView.text
             
             if memo == nil { // add a new entry
-                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,memoColor: color)
+                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,time: mTime,day: mDay,memoColor: color)
             } else { // updating the existing entry
-                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,memoColor: color)
+                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,time: mTime,day: mDay,memoColor: color)
             }
             }
 
@@ -225,6 +235,8 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             memo = memo1
         }
     }
+    
+
     
     /***** 网络状态监听部分（开始） *****/
     // Reachability必须一直存在，所以需要设置为全局变量
@@ -287,4 +299,60 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
 
 }
 
+class TimeTableViewController: UITableViewController,UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var hourTextField: UITextField!
+    
+    @IBOutlet weak var minuteTextField: UITextField!
+    
+    @IBOutlet weak var yearTextField: UITextField!
+    
+    @IBOutlet weak var monthTextField: UITextField!
+    
+    @IBOutlet weak var dayTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
 
+        let i = getTimes()
+        
+        hourTextField.text = String(i[3])
+        minuteTextField.text = String(i[4])
+        yearTextField.text = String(i[0])
+        monthTextField.text = String(i[1])
+        dayTextField.text = String(i[2])
+        
+        time = hourTextField.text! + ":" + minuteTextField.text!
+        day = yearTextField.text! + "年" + monthTextField.text! + "月" + dayTextField.text! + "日"
+
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    func getTimes() -> [Int] {
+        
+        var timers: [Int] = [] //  返回的数组
+        
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year,.month,.day, .weekday, .hour, .minute,.second], from: Date())
+        
+        timers.append(comps.year!)  // 年 ，后2位数
+        timers.append(comps.month!)            // 月
+        timers.append(comps.day!)                // 日
+        timers.append(comps.hour!)               // 小时
+        timers.append(comps.minute!)            // 分钟
+        timers.append(comps.second!)            // 秒
+        timers.append(comps.weekday! - 1)      //星期
+        
+        return timers;
+    }
+  
+
+ }
