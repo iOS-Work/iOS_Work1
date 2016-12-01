@@ -58,6 +58,9 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+//        sleep(3000)
+//        locationManager.stopUpdatingLocation()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,7 +97,38 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
         let changeLocation:NSArray =  locations as NSArray
         let currentLocation = changeLocation.lastObject
         //latitude, longitude
-        positionLabel.text = "\((currentLocation! as AnyObject).coordinate.latitude, (currentLocation! as AnyObject).coordinate.longitude)"
+        currentLatitude = (currentLocation! as AnyObject).coordinate.latitude
+        currentLongitude = (currentLocation! as AnyObject).coordinate.longitude
+        //////////////
+        var showList = [AMapPOI]()
+        JKLocationManager.shared.jkReverseGeocoder(location: (currentLocation! as AnyObject).coordinate) { (reGeocode, error) in
+            if (error != nil) {
+                JKLOG(error?.localizedDescription)
+                print ("location1: "+"\(currentPosition)")
+            } else {
+                for poiItem in (reGeocode?.pois)!{
+                    showList.append(poiItem)
+                }
+                var addr = ""
+                for cell in showList {
+                    addr += cell.name
+                }
+                
+//                let item: AMapPOI = showList[indexPath.row] as! AMapPOI
+//                cell.textLabel?.text = item.name
+//                cell.detailTextLabel?.text = item.address
+                
+//                var addr = reGeocode?.formattedAddress
+                currentPosition = addr
+//                currentPosition = (reGeocode?.addressComponent.city)!
+                JKLOG("\(reGeocode?.formattedAddress)\n\(reGeocode?.addressComponent)")
+                print ("location2: "+"\(currentPosition)")
+            }
+        }
+        
+        positionLabel.text = "\(currentPosition)"
+//        locationManager.stopUpdatingLocation()
+        ////////////////
     }
     @IBAction func unwindToList(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindToList" {

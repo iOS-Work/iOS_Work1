@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+var currentLatitude = 0.0
+var currentLongitude = 0.0
+var currentPosition = "Position"
+var globalList = [MemoDataMO]()
+
 func iOS8()->Bool{return((UIDevice.current.systemVersion as NSString).floatValue >= 8.0)}
 func iOS10()->Bool{return((UIDevice.current.systemVersion as NSString).floatValue >= 10.0)}
 func JKScreenWidth() -> CGFloat{return UIScreen.main.bounds.size.width}

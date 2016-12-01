@@ -47,7 +47,7 @@ class JKLocationManager: NSObject,AMapLocationManagerDelegate {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.distanceFilter = 10.0
-        manager.reGeocodeTimeout = 3
+        manager.reGeocodeTimeout = 5
         manager.locationTimeout = 5
         return manager
     }()
@@ -59,7 +59,7 @@ class JKLocationManager: NSObject,AMapLocationManagerDelegate {
     
     
     private func initialization() {
-        self.userLocation = CLLocationCoordinate2D.init(latitude: 0, longitude: 0)
+        self.userLocation = CLLocationCoordinate2D.init(latitude: currentLatitude, longitude: currentLongitude)
     }
     
     ///  获取定位信息
@@ -67,7 +67,6 @@ class JKLocationManager: NSObject,AMapLocationManagerDelegate {
         self.appLocationServerEnable = true
         self.locationManager.startUpdatingLocation()
     }
-    
     
     // 定位成功
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!) {
@@ -103,26 +102,10 @@ class JKLocationManager: NSObject,AMapLocationManagerDelegate {
         return String.init(format: "%.3f", locationDistance/1000.0)
     }
     
-    
-    
-    //    /// 测距
-    //    func distance(fromLocationCoordinate locationA: CLLocationCoordinate2D, toLocationCoordinate locationB: CLLocationCoordinate2D) -> String {
-    //        let pointA = MKMapPointForCoordinate(locationA)
-    //        let pointB = MKMapPointForCoordinate(locationB)
-    //        let distance = MKMetersBetweenMapPoints(pointA, pointB)
-    //        return String.init(format: "%.3f", distance/1000.0)
-    //    }
 }
 
 
 extension JKLocationManager:AMapSearchDelegate {
-    
-    // 在分类中添加static静态常量属性会直接报错，无论加没加@nonobjc
-    //  error: a declaration cannot be both 'final' and 'dynamic'
-    // static let JKRegeocoderKey = "JKRegeocoderKey"
-    
-    // 在分类中添加属性同样报错
-    // let JKGeocoderKey = "JKGeocoderKey"
     
     /// 正向地理编码（地名-->坐标）
     func jkGeocoder(address: String, city: String?, completionHandler: @escaping JKGeocodeCompletionHandler) -> Void {
@@ -159,13 +142,6 @@ extension JKLocationManager:AMapSearchDelegate {
     }
     
     func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
-        //        if let completionHandler: JKGeocodeCompletionHandler = objc_getAssociatedObject(self, self.JKGeocoderKey) as? JKGeocodeCompletionHandler {
-        //            completionHandler(nil,error)
-        //            objc_removeAssociatedObjects(self)
-        //        }else if let completionHandler: JKReGeocodeCompletionHandler = objc_getAssociatedObject(self, self.JKRegeocoderKey) as? JKReGeocodeCompletionHandler{
-        //            completionHandler(nil,error)
-        //            objc_removeAssociatedObjects(self)
-        //        }
         
         if (self.geocodeCompletionHandler != nil) {
             self.geocodeCompletionHandler?(nil,error)

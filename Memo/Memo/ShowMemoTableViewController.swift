@@ -33,6 +33,7 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate),
             let fetchedList = appDelegate.fetchContext() {
             acqList += fetchedList }
+        globalList = acqList
 //        for memo in acqList {
 //            if let mContent = memo?.mContent {
 //                memo?.mImage = UIImage(named: mContent)
@@ -169,4 +170,5 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
                 tableView.insertRows(at: [newIndexPath], with: .bottom) }
         }
     }
+
 }

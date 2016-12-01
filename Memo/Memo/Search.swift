@@ -95,13 +95,46 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
     }
     
     //MARK: TextField Delegates
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (self.searchField.text == "" || self.searchField.text == nil) {
+            self.items = []
+            self.tableView.removeFromSuperview()
+        } else{
+            self.items.removeAll()
+            let acqList = globalList
+            //这里把所有的数据库信息都存到了acqList里
+            for list in acqList {
+                if (list.memoContent?.localizedCaseInsensitiveContains(textField.text!))! {
+                    self.items.append(list.memoContent!)
+                }
+                //self.items.append(list.memoContent!)
+            }
+            DispatchQueue.main.async(execute: {
+                if self.items.count > 0  {
+                    self.addSubview(self.tableView)
+                } else {
+                    self.tableView.removeFromSuperview()
+                }
+                self.tableView.reloadData()
+            })
+        }
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if (self.searchField.text == "" || self.searchField.text == nil) {
             self.items = []
             self.tableView.removeFromSuperview()
         } else{
-            self.items = ["Memo1","Memo2"]
+            self.items.removeAll()
+            let acqList = globalList
+            //这里把所有的数据库信息都存到了acqList里
+            for list in acqList {
+                let checkText = textField.text! + string
+                if (list.memoContent?.localizedCaseInsensitiveContains(checkText))! {
+                    self.items.append(list.memoContent!)
+                }
+                //self.items.append(list.memoContent!)
+            }
             DispatchQueue.main.async(execute: {
                 if self.items.count > 0  {
                     self.addSubview(self.tableView)

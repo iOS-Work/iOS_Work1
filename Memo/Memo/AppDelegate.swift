@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         // Override point for customization after application launch.
         //key
-        
+        //self.edu.Memo
         AMapServices.shared().apiKey = "e65700d588068f4491d28708b506048d"
         return true
     }
