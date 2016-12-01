@@ -17,10 +17,10 @@ extension MemoDataMO {
     }
 
     @NSManaged public var memoContent: String?
+    @NSManaged public var memoDay: String?
     @NSManaged public var memoImage: Data?
     @NSManaged public var memoPosition: String?
-    @NSManaged public var memoDay: Date?
-    @NSManaged public var memoTime: Date?
-    @NSManaged public var memoColor: Int64
+    @NSManaged public var memoTime: String?
+    @NSManaged public var memoColor: String?
 
 }

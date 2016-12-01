@@ -114,6 +114,20 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
        // let mImage = memo?.mImage
        // cell.alongImageView.image = UIImage(data: memo.memoImage!)
         cell.memoContent.text = memo.memoContent
+        if memo.memoColor == nil {
+            memo.memoColor = "blue"
+        }
+        if memo.memoColor == "blue" {
+            cell.alongImageView.image = UIImage(named: "button1")
+        } else if memo.memoColor == "purple" {
+            cell.alongImageView.image = UIImage(named: "button2")
+        } else if memo.memoColor == "green" {
+            cell.alongImageView.image = UIImage(named: "button3")
+        } else if memo.memoColor == "yellow" {
+            cell.alongImageView.image = UIImage(named: "button4")
+        } else {
+            cell.alongImageView.image = UIImage(named: "button5")
+        }
         //cell.memoTime.text = String(describing: memo.memoDay) + String(describing: memo.memoTime)
         return cell }
 

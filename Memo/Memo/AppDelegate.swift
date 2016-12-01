@@ -94,9 +94,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    func addToContext(memoContent: String) -> MemoDataMO {
+    func addToContext(memoContent: String, memoColor: String?) -> MemoDataMO {
         let memo = MemoDataMO(context: persistentContainer.viewContext)
         memo.memoContent = memoContent
+        memo.memoColor = memoColor
 //        if let photo = photo {
 //            person.photo = UIImagePNGRepresentation(photo) }
 

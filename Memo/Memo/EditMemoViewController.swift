@@ -13,6 +13,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
+    var colorChoose: String? = "blue"
     @IBOutlet weak var blue: UIButton!
     
     @IBOutlet weak var red: UIButton!
@@ -20,7 +21,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var green: UIButton!
     @IBOutlet weak var purple: UIButton!
     @IBAction func blueMemo(_ sender: UIButton) {
-        memo?.memoColor = 0
+        colorChoose = "blue"
         
         blue.setImage(UIImage(named:"blue"), for:.normal)
         purple.setImage(UIImage(named:"button2"), for:.normal)
@@ -31,7 +32,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func purpleMemo(_ sender: UIButton) {
-        memo?.memoColor = 1
+        colorChoose = "purple"
         blue.setImage(UIImage(named:"button1"), for:.normal)
         purple.setImage(UIImage(named:"purple"), for:.normal)
         green.setImage(UIImage(named:"button3"), for:.normal)
@@ -41,7 +42,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func greenMemo(_ sender: UIButton) {
-        memo?.memoColor = 2
+        colorChoose = "green"
         blue.setImage(UIImage(named:"button1"), for:.normal)
         purple.setImage(UIImage(named:"button2"), for:.normal)
         green.setImage(UIImage(named:"green"), for:.normal)
@@ -50,7 +51,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func yellowMemo(_ sender: UIButton) {
-        memo?.memoColor = 3
+        colorChoose = "yellow"
         blue.setImage(UIImage(named:"button1"), for:.normal)
         purple.setImage(UIImage(named:"button2"), for:.normal)
         green.setImage(UIImage(named:"button3"), for:.normal)
@@ -59,7 +60,7 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func redMemo(_ sender: UIButton) {
-        memo?.memoColor = 4
+        colorChoose = "red"
         blue.setImage(UIImage(named:"button1"), for:.normal)
         purple.setImage(UIImage(named:"button2"), for:.normal)
         green.setImage(UIImage(named:"button3"), for:.normal)
@@ -135,11 +136,12 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate {
             let appDelegate = (UIApplication.shared.delegate as?
             AppDelegate) {
             let content = memoContent.text
+            let color = colorChoose
             //let photo = photoImageView.image
             //let notes = notesTextView.text
             
             if memo == nil { // add a new entry
-                self.memo = appDelegate.addToContext(memoContent: content!)
+                self.memo = appDelegate.addToContext(memoContent: content!,memoColor: color)
             } else { // updating the existing entry
                 appDelegate.updateToContext(memo: memo!, content: content!)
             }

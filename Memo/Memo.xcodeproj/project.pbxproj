@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		760ACC681DE87F2600F91E14 /* ShowMemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760ACC671DE87F2600F91E14 /* ShowMemoTableViewController.swift */; };
 		7611F9941DEFE31D0072035D /* Memo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7611F9921DEFE31D0072035D /* Memo.xcdatamodeld */; };
-		7611F9971DEFE48B0072035D /* MemoDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611F9951DEFE48B0072035D /* MemoDataMO+CoreDataClass.swift */; };
-		7611F9981DEFE48B0072035D /* MemoDataMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611F9961DEFE48B0072035D /* MemoDataMO+CoreDataProperties.swift */; };
+		7611F99F1DF058E40072035D /* MemoDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611F99D1DF058E40072035D /* MemoDataMO+CoreDataClass.swift */; };
+		7611F9A01DF058E40072035D /* MemoDataMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611F99E1DF058E40072035D /* MemoDataMO+CoreDataProperties.swift */; };
 		762123D51DE92DD60034EEE7 /* MemoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762123D41DE92DD60034EEE7 /* MemoListTableViewCell.swift */; };
 		762123D71DE930C80034EEE7 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762123D61DE930C80034EEE7 /* Memo.swift */; };
 		762123D91DE9866F0034EEE7 /* SortTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762123D81DE9866F0034EEE7 /* SortTableViewController.swift */; };
@@ -58,8 +58,8 @@
 /* Begin PBXFileReference section */
 		760ACC671DE87F2600F91E14 /* ShowMemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMemoTableViewController.swift; sourceTree = "<group>"; };
 		7611F9931DEFE31D0072035D /* Memo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memo.xcdatamodel; sourceTree = "<group>"; };
-		7611F9951DEFE48B0072035D /* MemoDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7611F9961DEFE48B0072035D /* MemoDataMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoDataMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7611F99D1DF058E40072035D /* MemoDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7611F99E1DF058E40072035D /* MemoDataMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoDataMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		762123D41DE92DD60034EEE7 /* MemoListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListTableViewCell.swift; sourceTree = "<group>"; };
 		762123D61DE930C80034EEE7 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		762123D81DE9866F0034EEE7 /* SortTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortTableViewController.swift; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		765F59801DE7321100877DCC = {
 			isa = PBXGroup;
 			children = (
-				7611F9951DEFE48B0072035D /* MemoDataMO+CoreDataClass.swift */,
-				7611F9961DEFE48B0072035D /* MemoDataMO+CoreDataProperties.swift */,
+				7611F99D1DF058E40072035D /* MemoDataMO+CoreDataClass.swift */,
+				7611F99E1DF058E40072035D /* MemoDataMO+CoreDataProperties.swift */,
 				765F598B1DE7321100877DCC /* Memo */,
 				765F598A1DE7321100877DCC /* Products */,
 				D27E80E61DECA50200B4A43B /* Frameworks */,
@@ -355,7 +355,7 @@
 				D26AF43C1DEE7CA2009C4FF8 /* JKMapSearchViewController.swift in Sources */,
 				765F598D1DE7321100877DCC /* AppDelegate.swift in Sources */,
 				D26AF4341DEE7C17009C4FF8 /* UIViewFrameExtension.swift in Sources */,
-				7611F9971DEFE48B0072035D /* MemoDataMO+CoreDataClass.swift in Sources */,
+				7611F99F1DF058E40072035D /* MemoDataMO+CoreDataClass.swift in Sources */,
 				D24EE0741DE9D65900044C6B /* Search.swift in Sources */,
 				762123D91DE9866F0034EEE7 /* SortTableViewController.swift in Sources */,
 				7611F9941DEFE31D0072035D /* Memo.xcdatamodeld in Sources */,
@@ -367,7 +367,7 @@
 				D26AF43E1DEE7CBF009C4FF8 /* JKLocationManager.swift in Sources */,
 				D26AF3E81DEE70C9009C4FF8 /* JKGlobalDefinition.swift in Sources */,
 				D26AF4381DEE7C60009C4FF8 /* JKLocationTableViewCell.swift in Sources */,
-				7611F9981DEFE48B0072035D /* MemoDataMO+CoreDataProperties.swift in Sources */,
+				7611F9A01DF058E40072035D /* MemoDataMO+CoreDataProperties.swift in Sources */,
 				D26AF4321DEE7BD5009C4FF8 /* JKNotificationNameExtension.swift in Sources */,
 				D26AF42E1DEE7B49009C4FF8 /* UISearchBarExtension.swift in Sources */,
 			);
