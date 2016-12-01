@@ -880,7 +880,7 @@
                                     <segue destination="C0U-9G-0KR" kind="embed" id="Tlp-EI-1rr"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOD-If-ux3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MOD-If-ux3">
                                 <rect key="frame" x="13" y="246" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="2Wb-4N-DoH"/>
@@ -899,10 +899,10 @@
                             <constraint firstItem="ybF-WQ-Qj3" firstAttribute="leading" secondItem="k1E-kL-1GQ" secondAttribute="leading" id="3Kp-nq-whq"/>
                             <constraint firstItem="kNM-uh-oFA" firstAttribute="top" secondItem="LoQ-mZ-32w" secondAttribute="bottom" id="5H6-Fb-Szr"/>
                             <constraint firstItem="MOD-If-ux3" firstAttribute="centerX" secondItem="ybF-WQ-Qj3" secondAttribute="centerX" constant="-134.5" id="DJS-Az-8uA"/>
-                            <constraint firstItem="MOD-If-ux3" firstAttribute="centerY" secondItem="k1E-kL-1GQ" secondAttribute="centerY" constant="-25.5" id="MWk-Vx-VIG"/>
+                            <constraint firstItem="MOD-If-ux3" firstAttribute="centerY" secondItem="k1E-kL-1GQ" secondAttribute="centerY" constant="-47.5" id="MWk-Vx-VIG"/>
                             <constraint firstItem="kNM-uh-oFA" firstAttribute="leading" secondItem="k1E-kL-1GQ" secondAttribute="leadingMargin" constant="-3" id="Q26-df-5hC"/>
                             <constraint firstItem="PuE-U2-lrV" firstAttribute="leading" secondItem="k1E-kL-1GQ" secondAttribute="leading" id="UZl-YN-VCg"/>
-                            <constraint firstItem="MOD-If-ux3" firstAttribute="centerY" secondItem="kNM-uh-oFA" secondAttribute="centerY" constant="146" id="Vdl-zZ-Y7G"/>
+                            <constraint firstItem="MOD-If-ux3" firstAttribute="centerY" secondItem="kNM-uh-oFA" secondAttribute="centerY" constant="124" id="Vdl-zZ-Y7G"/>
                             <constraint firstItem="ybF-WQ-Qj3" firstAttribute="top" secondItem="5Qy-a6-B5g" secondAttribute="bottom" constant="17" id="Ypf-UE-1ma"/>
                             <constraint firstItem="5Qy-a6-B5g" firstAttribute="leading" secondItem="k1E-kL-1GQ" secondAttribute="leadingMargin" id="sNi-2j-ZDZ"/>
                         </constraints>
