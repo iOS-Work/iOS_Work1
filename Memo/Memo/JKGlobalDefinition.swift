@@ -22,8 +22,8 @@ func JKColor_RGB(r:Float,g:Float,b:Float) -> UIColor {
     return UIColor.init(colorLiteralRed: r/255.0, green: g/255.0, blue: b/255.0, alpha: 1.0)
 }
 
-
-
+var globalMemo : MemoDataMO?
+var gmStatus = 0
 func JKLOG<T>(_ log : T,className: String = #file,methodName: String = #function, lineNumber: Int = #line){
     #if DEBUG
         let filePath = className as NSString

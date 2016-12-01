@@ -94,6 +94,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    func addToContext(memoContent: String) -> MemoDataMO {
+        let memo = MemoDataMO(context: persistentContainer.viewContext)
+        memo.memoContent = memoContent
+//        if let photo = photo {
+//            person.photo = UIImagePNGRepresentation(photo) }
+
+        print("Saving new memo to context ...")
+        saveContext()
+        return memo
+    }
+    
+    func fetchContext() -> [MemoDataMO]? {
+        var fetchedList:[MemoDataMO]? = nil
+        do {
+            fetchedList = try persistentContainer.viewContext.fetch(MemoDataMO.fetchRequest()) as?[MemoDataMO]
+        } catch {
+            print("Failed to fetch employees: \(error)")
+        }
+        return fetchedList
+    }
+
+    func deleteFromContext(memo: MemoDataMO) {
+        persistentContainer.viewContext.delete(memo)
+        print("deleting the person from context ...")
+        saveContext()
+    }
+
+    func updateToContext(memo: MemoDataMO, content: String) {
+        memo.memoContent = content
+        print("updating the person to context ...")
+        saveContext() }
 
 }
 

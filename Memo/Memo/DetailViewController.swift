@@ -15,7 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var memoContent: UITextView!
     
     @IBAction func editMemo(_ sender: UIButton) {
-        
+        gmStatus = 1
+        performSegue(withIdentifier: "unwindToEditMemo", sender: self)
 
             
     }
@@ -31,8 +32,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        globalMemo = memo
         memoContent.text = memo?.memoContent
+        
 //        if let photo = person?.photo {
 //            photoImageView.image = photo } else {
 //            photoImageView.image = UIImage(named:"photoalbum") }
@@ -53,7 +55,15 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindToEditMemo"
+            {
+             memo?.memoContent = memoContent.text
+        }
+        
+        
     }
+
+
     
 
 }
