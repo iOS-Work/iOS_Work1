@@ -725,7 +725,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jcS-g7-dzU"/>
+                    <navigationItem key="navigationItem" id="jcS-g7-dzU">
+                        <barButtonItem key="leftBarButtonItem" title="back" id="acL-17-1RZ">
+                            <connections>
+                                <action selector="backAction:" destination="mw1-GB-CUB" id="Bn8-8A-Drv"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="recover" id="2Ti-p8-cuj">
+                                <connections>
+                                    <action selector="recoverAction:" destination="mw1-GB-CUB" id="8DJ-O0-oN9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="save" id="yHq-4O-OO4">
+                                <connections>
+                                    <action selector="saveAction:" destination="mw1-GB-CUB" id="i8s-Te-E6E"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pD-ln-qfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

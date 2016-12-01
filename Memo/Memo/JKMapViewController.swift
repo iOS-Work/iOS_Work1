@@ -11,14 +11,13 @@ import UIKit
 class JKMapViewController: FCBaseViewController {
     
     var isSelectedCell: Bool?
-    
-        var mapView: MAMapView?
-        var tableView: UITableView?
-        var hiddenTableView: UITableView?
-        var currentPOI: AMapPOI?
-        var searchController: UISearchController?
-        var searchResultsController: JKMapSearchViewController?
-        var flagView: UIView?
+    var mapView: MAMapView?
+    var tableView: UITableView?
+    var hiddenTableView: UITableView?
+    var currentPOI: AMapPOI?
+    var searchController: UISearchController?
+    var searchResultsController: JKMapSearchViewController?
+    var flagView: UIView?
     
         lazy var searchAPI: AMapSearchAPI = {
             let search = AMapSearchAPI.init()
@@ -26,74 +25,94 @@ class JKMapViewController: FCBaseViewController {
             return search!
         }()
     
+    //return without save action
+    @IBAction func backAction(_ sender: UIBarButtonItem) {
+        
+    }
     
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            JKLocationManager.shared.startUpdatingLocation()
+     //!!!!!!!!!!!!!!!!!修改为保存信息并且返回
+    //save position action
+    @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        
+    }
     
-            // 底层的TableView用来存放searchBar，以实现动画效果
-            self.hiddenTableView = UITableView.init(frame: self.view.bounds, style: .plain)
-            self.hiddenTableView?.separatorStyle = .none
-            self.hiddenTableView?.delegate = self
-            self.hiddenTableView?.dataSource = self
-            self.hiddenTableView?.backgroundColor = UIColor.white
-            self.view.addSubview(self.hiddenTableView!)
+    //recover the original position action
+    @IBAction func recoverAction(_ sender: UIBarButtonItem) {
+//        sender.isSelected = true
+        self.mapView?.setCenter((self.mapView?.userLocation.coordinate)!, animated: true)
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        JKLocationManager.shared.startUpdatingLocation()
+        
+        // 底层的TableView用来存放searchBar，以实现动画效果
+        self.hiddenTableView = UITableView.init(frame: self.view.bounds, style: .plain)
+        self.hiddenTableView?.separatorStyle = .none
+        self.hiddenTableView?.delegate = self
+        self.hiddenTableView?.dataSource = self
+        self.hiddenTableView?.backgroundColor = UIColor.white
+        self.view.addSubview(self.hiddenTableView!)
+        
+        // 搜索结果展示
+        self.searchResultsController = JKMapSearchViewController.init(style: .plain)
+        self.searchResultsController?.delegate = self
+        
+        // 搜索控制器
+        self.searchController = UISearchController.init(searchResultsController: self.searchResultsController)
+        self.searchController?.delegate = self
+        self.searchController?.searchResultsUpdater = self
+        self.searchController?.searchBar.jk_customSearchBar(withPlaceholder: "Search")
+        
+        // mark
+        self.hiddenTableView?.tableHeaderView = self.searchController?.searchBar
+        
+        // 避免警告
+        self.searchController?.loadViewIfNeeded()
+        
+        // mapview
+        let mapViewFrame = CGRect.init(x: 0, y: 108, width: JKScreenWidth(), height: JKScreenHeight()*0.4)
+        self.mapView = MAMapView.init(frame: mapViewFrame)
+        self.mapView?.showsUserLocation = true
+        self.mapView?.delegate = self
+        self.mapView?.mapType = .standard
+        self.mapView?.showsCompass = true
+        self.mapView?.userTrackingMode = .follow
+        self.mapView?.showsScale = true
+        self.mapView?.distanceFilter = 300
+        self.mapView?.desiredAccuracy = kCLLocationAccuracyBest
+        self.view.addSubview(self.mapView!)
+        
+        /////////////////////////获取地图信息
+//        self.mapViewUpdateAnnotation(withCoordinate: (mapView?.centerCoordinate)!)
+//        let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(item.location.latitude), longitude: CLLocationDegrees(item.location.longitude))
+//        self.mapView?.setCenter(location, animated: true)
+        /////////////////////////
+        
+        // 黑色的中心点
+        let flagView = UIView.init()
+        flagView.bounds = CGRect.init(x: 0, y: 0, width: 10, height: 10)
+        flagView.backgroundColor = UIColor.black
+        flagView.center = (self.mapView?.center)!
+        self.view.addSubview(flagView)
+        self.flagView = flagView
+        
+        // 监听定位使能
+        NotificationCenter.default.addObserver(self, selector: #selector(JKMapViewController.didReceive(notification:)), name: NSNotification.Name.JKLocation.disable, object: nil)
+        
+        // 底部显示结果的tableView
+        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: JKMaxYOfView(self.mapView!), width: JKScreenWidth(), height: JKScreenHeight() - JKMaxYOfView(self.mapView!)), style: .plain)
+        self.tableView?.backgroundColor = UIColor.white
+        self.tableView?.allowsSelection = true
+        self.tableView?.tintColor = UIColor.red
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
+        self.view .addSubview(self.tableView!)
+        
+//        let backItem = UIBarButtonItem.init(title: "recover", style: .plain, target: self, action: #selector(locationToUserPosition(sender:)))
+//        let logItem = UIBarButtonItem.init(title: "save", style: .plain, target: self, action: #selector(printCurrentLocationMessage))
+//        self.navigationItem.rightBarButtonItems = [backItem,logItem]
     
-            // 搜索结果展示
-            self.searchResultsController = JKMapSearchViewController.init(style: .plain)
-            self.searchResultsController?.delegate = self
-    
-            // 搜索控制器
-            self.searchController = UISearchController.init(searchResultsController: self.searchResultsController)
-            self.searchController?.delegate = self
-            self.searchController?.searchResultsUpdater = self
-            self.searchController?.searchBar.jk_customSearchBar(withPlaceholder: "Search")
-    
-            // mark
-            self.hiddenTableView?.tableHeaderView = self.searchController?.searchBar
-    
-            // 避免警告
-            self.searchController?.loadViewIfNeeded()
-     
-    
-            // mapview
-            let mapViewFrame = CGRect.init(x: 0, y: 108, width: JKScreenWidth(), height: JKScreenHeight()*0.4)
-            self.mapView = MAMapView.init(frame: mapViewFrame)
-            self.mapView?.showsUserLocation = true
-            self.mapView?.delegate = self
-            self.mapView?.mapType = .standard
-            self.mapView?.showsCompass = true
-            self.mapView?.userTrackingMode = .follow
-            self.mapView?.showsScale = true
-            self.mapView?.distanceFilter = 3000
-            self.mapView?.desiredAccuracy = kCLLocationAccuracyBest
-            self.view.addSubview(self.mapView!)
-            
-            // 黑色的中心点
-            let flagView = UIView.init()
-            flagView.bounds = CGRect.init(x: 0, y: 0, width: 10, height: 10)
-            flagView.backgroundColor = UIColor.black
-            flagView.center = (self.mapView?.center)!
-            self.view.addSubview(flagView)
-            self.flagView = flagView
-            
-            // 监听定位使能
-            NotificationCenter.default.addObserver(self, selector: #selector(JKMapViewController.didReceive(notification:)), name: NSNotification.Name.JKLocation.disable, object: nil)
-            
-            // 底部显示结果的tableView
-            self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: JKMaxYOfView(self.mapView!), width: JKScreenWidth(), height: JKScreenHeight() - JKMaxYOfView(self.mapView!)), style: .plain)
-            self.tableView?.backgroundColor = UIColor.white
-            self.tableView?.allowsSelection = true
-            self.tableView?.tintColor = UIColor.red
-            self.tableView?.delegate = self
-            self.tableView?.dataSource = self
-            self.view .addSubview(self.tableView!)
-            
-            
-            let backItem = UIBarButtonItem.init(title: "recover", style: .plain, target: self, action: #selector(locationToUserPosition(sender:)))
-            let logItem = UIBarButtonItem.init(title: "save", style: .plain, target: self, action: #selector(printCurrentLocationMessage))
-            self.navigationItem.rightBarButtonItems = [backItem,logItem]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -201,6 +220,7 @@ extension JKMapViewController: UITableViewDelegate,UITableViewDataSource{
         return JKScreenHeight() - 108
     }
     
+    //根据经纬度获取地图数据!!!!!
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (tableView == self.tableView){
             JKLOG(self.dataArray[indexPath.row])
