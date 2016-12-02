@@ -79,13 +79,16 @@ class JKMapViewController: FCBaseViewController {
         self.mapView?.desiredAccuracy = kCLLocationAccuracyBest
         self.view.addSubview(self.mapView!)
         
-        
-        let coordinate = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(currentLatitude), longitude: CLLocationDegrees(currentLongitude))
+        //39.95264  116.34375
+        let coordinate = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(bjLatitude), longitude: CLLocationDegrees(bjLongitude))
         self.mapView?.setCenter(coordinate, animated: true)
-//        self.mapViewUpdateAnnotation(withCoordinate: coordinate)
+        
+        self.mapViewUpdateAnnotation(withCoordinate: coordinate)
         JKLOG("come into map")
+        JKLOG("\(coordinate)")
         JKLOG("\(currentLatitude)") //信息的对的！！！
         
+//        self.mapViewUpdateAnnotation(withCoordinate: coordinate)
         //初始化也应该加上选择的位置是当前位置！！！！！！！！
         /////////////////////////获取地图信息
 //        self.mapViewUpdateAnnotation(withCoordinate: (mapView?.centerCoordinate)!)
@@ -113,6 +116,8 @@ class JKMapViewController: FCBaseViewController {
         self.tableView?.dataSource = self
         self.view .addSubview(self.tableView!)
 
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,14 +155,7 @@ class JKMapViewController: FCBaseViewController {
 
 extension JKMapViewController: MAMapViewDelegate{
     
-    //    func mapView(_ mapView: MAMapView!, mapDidMoveByUser wasUserAction: Bool) {
-    //        JKLOG("拖拽结束")
-    //    }
-    //    func mapView(_ mapView: MAMapView!, mapDidZoomByUser wasUserAction: Bool) {
-    //        JKLOG("缩放结束")
-    //    }
-    
-    // 位置范围发送改变，进行反地理编码
+    // 位置范围改变，反地理编码
     func mapView(_ mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
         JKLOG("regionDidChangeAnimated")
         if (self.isSelectedCell == false){
@@ -166,13 +164,13 @@ extension JKMapViewController: MAMapViewDelegate{
         self.isSelectedCell = false
     }
     
-    // 用某个坐标进行反地理编码，获取位置信息
+    // 根据坐标反地理编码，获取位置信息
     func mapViewUpdateAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) -> Void {
         JKLocationManager.shared.jkReverseGeocoder(location: coordinate) { (regeocode, error) in
             self.currentPOI = nil
             self.dataArray.removeAll()
             for poiItem in (regeocode?.pois)!{
-                JKLOG("\(poiItem)")
+//                JKLOG("\(poiItem)") //上面是搜索栏对应的信息
                 self.dataArray.append(poiItem)
             }
             self.tableView?.reloadData()
@@ -213,10 +211,10 @@ extension JKMapViewController: UITableViewDelegate,UITableViewDataSource{
         return JKScreenHeight() - 108
     }
     
-    //根据经纬度获取地图数据!!!!!
+    //根据经纬度获取地图数据!!!!!！！！很奇怪，初始化时候经纬度对应数据不正确
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (tableView == self.tableView){
-            JKLOG(self.dataArray[indexPath.row])
+//            JKLOG(self.dataArray[indexPath.row])
             // 选中某个位置，在地图中间显示
             self.isSelectedCell = true
             let item: AMapPOI = self.dataArray[indexPath.row] as! AMapPOI
@@ -247,7 +245,7 @@ extension JKMapViewController: UISearchBarDelegate,UISearchResultsUpdating,UISea
     func updateSearchResults(for searchController: UISearchController) {
         let request: AMapInputTipsSearchRequest = AMapInputTipsSearchRequest.init()
         request.keywords = searchController.searchBar.text
-        request.types = "生活服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|公司企业|道路附属设施|地名地址信息|公共设施"
+//        request.types = "生活服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|公司企业|道路附属设施|地名地址信息|公共设施"
         request.city = JKLocationManager.shared.currentCity
         self.searchAPI.aMapInputTipsSearch(request)
     }
@@ -303,7 +301,7 @@ extension JKMapViewController: AMapSearchDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController. // Pass the selected object to the new view controller.
+
         if segue.identifier == "unwindToList" {
             
         } else if segue.identifier == "unwindSaveToList", let editMemoViewController = segue.destination as? EditMemoViewController {

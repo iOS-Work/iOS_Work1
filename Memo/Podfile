@@ -1,0 +1,6 @@
+platform :ios, ’10.2’
+use_frameworks!
+
+target ‘Memo’ do
+    pod ‘JZLocationConverter’
+end

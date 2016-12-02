@@ -20,6 +20,7 @@ class DetailViewController: UIViewController {
     var time1 = ""
     var day1 = ""
     
+    @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var showTime: UILabel!
     
     @IBOutlet weak var showDay: UILabel!
@@ -48,6 +49,7 @@ class DetailViewController: UIViewController {
         memoContent.text = memo?.memoContent
         showTime.text = memo?.memoTime
         showDay.text = memo?.memoDay
+        positionLabel.text = memo?.memoPosition
         
 //        if let photo = person?.photo {
 //            photoImageView.image = photo } else {

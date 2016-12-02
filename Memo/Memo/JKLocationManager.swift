@@ -74,25 +74,38 @@ class JKLocationManager: NSObject,AMapLocationManagerDelegate {
         self.appLocationServerEnable = true
         
         if (self.userLocation?.latitude != location?.coordinate.latitude || self.userLocation?.longitude != location?.coordinate.longitude) {
-            self.userLocation = location?.coordinate
+//            JKLOG(self.userLocation?.longitude)
+//            JKLOG(location?.coordinate.longitude)
+            self.userLocation?.latitude = location.coordinate.latitude
+            if ( location.coordinate.longitude > 0){
+                self.userLocation?.longitude = location.coordinate.longitude
+            } else {
+                self.userLocation?.longitude = 0.0 - location.coordinate.longitude
+            }
+            JKLOG(self.userLocation?.longitude)
+            JKLOG(location?.coordinate.longitude)
+//            self.userLocation = location?.coordinate
         }
         
         // 获取城市信息
-        self.jkReverseGeocoder(location: location.coordinate) {[weak self] (reGeocode, error) in
+        self.jkReverseGeocoder(location: self.userLocation!) {[weak self] (reGeocode, error) in
             if (error != nil) {
                 JKLOG(error?.localizedDescription)
             } else {
                 self?.currentCity = reGeocode?.addressComponent.city
+//                JKLOG("\(self?.currentCity)")
                 JKLOG("\(reGeocode?.formattedAddress)\n\(reGeocode?.addressComponent)")
+                JKLOG("定位成功")
             }
         }
     }
     
     // 定位失败
     func amapLocationManager(_ manager: AMapLocationManager!, didFailWithError error: Error!) {
-        self.userLocation = CLLocationCoordinate2D.init(latitude: 0, longitude: 0)
+        self.userLocation = CLLocationCoordinate2D.init(latitude: currentLatitude, longitude: currentLongitude)
         self.appLocationServerEnable = false
         NotificationCenter.default.post(name: NSNotification.Name.JKLocation.disable, object: nil)
+        JKLOG("定位失败")
     }
     
     
@@ -130,14 +143,18 @@ extension JKLocationManager:AMapSearchDelegate {
         request.location = point
         request.requireExtension = true
         self.search.aMapReGoecodeSearch(request)
-        
+        JKLOG("\(request.location)") //信息是对的
         self.reGeocodeCompletionHandler = completionHandler
+//        JKLOG("\(self.reGeocodeCompletionHandler)")
     }
     
     
     
     func onReGeocodeSearchDone(_ request: AMapReGeocodeSearchRequest!, response: AMapReGeocodeSearchResponse!) {
+        currentCity = response.regeocode.formattedAddress
+//        JKLOG("\(currentCity)") //在初始化时候是错的
         self.reGeocodeCompletionHandler?(response.regeocode,nil)
+        JKLOG("\(self.reGeocodeCompletionHandler)")
         self.reGeocodeCompletionHandler = nil
     }
     

@@ -8,16 +8,19 @@
 
 import UIKit
 import CoreLocation
-
+import JZLocationConverter
 
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let locationManager = CLLocationManager()
+    let locationManager : CLLocationManager = CLLocationManager()
     var memo: MemoDataMO?
     var positionInfo: String = ""
     var initTime = [Int]()
     var time = ""
     var day = ""
+    var currentLocation : CLLocation!
+    var networkStatus = 1
+
     
     @IBOutlet weak var positionButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -33,19 +36,12 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
     }
     
     @IBOutlet weak var hourTextField: UITextField!
-    
     @IBOutlet weak var minuteTextField: UITextField!
-    
     @IBOutlet weak var yearTextField: UITextField!
-    
-    
     @IBOutlet weak var monthTextField: UITextField!
-    
-    
     @IBOutlet weak var dayTextField: UITextField!
     var colorChoose: String? = "blue"
     @IBOutlet weak var blue: UIButton!
-    
     @IBOutlet weak var red: UIButton!
     @IBOutlet weak var yellow: UIButton!
     @IBOutlet weak var green: UIButton!
@@ -113,14 +109,6 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             gmStatus = 0
         }
     }
-    @IBAction func getPosition(_ sender: UIButton) {
-//        pushMapVC()
-    }
-    
-//    final func pushMapVC() {
-//        let mapVC = JKMapViewController.init()
-//        self.navigationController?.pushViewController(mapVC, animated: true)
-//    }
     
     @IBAction func cancel(_ sender: UIButton) {
     
@@ -151,9 +139,16 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         //memo?.memoContent
         // Do any additional setup after loading the view.
         //position
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
+        if networkStatus == 1 {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = kCLLocationAccuracyKilometer
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+            JKLOG("network")
+        } else {
+            JKLOG("no network")
+        }
         
         initTime = getTimes()
         
@@ -232,61 +227,91 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             let date = dayTextField.text
             print(time)
             print(day)
-//            -> [Int] print(TimeTableViewController.getTime(TimeTableViewController.init())
-            //let notes = notesTextView.text
             
             if memo == nil { // add a new entry
                 self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
             } else { // updating the existing entry
                 appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
             }
-            }
-
+        }
     }
     
-    lazy var geocoder : CLGeocoder = { return CLGeocoder.init() }()
+    //MARK:CLLocationManagerDelegate
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        //定位成功
+//        currentLocation = locations.last //取出经纬度
+//        //37.785834  122.406417
+//        //39.95264  116.34375
+////        currentLocation.coordinate.longitude = 116.34375
+////        currentLocation.coordinate.latitude = 39.95264
+//        JKLOG(currentLocation.coordinate.longitude)
+//        JKLOG(currentLocation.coordinate.latitude)
+//        LonLatToCity()//去调用转换
+//    }
     
-    //MARK: position
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        //定位失败
+        JKLOG(error)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let changeLocation:NSArray =  locations as NSArray
         let currentLocation = changeLocation.lastObject
-        //latitude, longitude
+        
         currentLatitude = (currentLocation as AnyObject).coordinate.latitude
         currentLongitude = (currentLocation as AnyObject).coordinate.longitude
+        JKLOG("\(currentLatitude)\n\(currentLongitude)")
+//        let locationCoord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: currentLatitude,longitude: currentLongitude)
+//        37.785834  122.406417
+//        39.95264  116.34375
+        let locationCoord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: bjLatitude,longitude: bjLongitude)
+        let position = JZLocationConverter.bd09(toGcj02: locationCoord) //好像没有多大变化
+        ////////////需要转化为高德地图的经纬度才行
+        JKLocationManager.shared.jkReverseGeocoder(location: position) { (reGeocode, error) in
+            if (error != nil) {
+                JKLOG(error?.localizedDescription)
+                print ("location1: "+"\(currentPosition)")
+            } else {
+                currentPosition = (reGeocode?.formattedAddress)!
+                JKLOG ("location2: "+"\(currentPosition)")
+                //修改地理位置
+                self.positionLabel.text = (reGeocode?.formattedAddress)!
+            }
+        }
         
-        
-//        self.geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-//            completionHandler(placemarks?.last,error)
-        //////////////
-//        var showList = [AMapPOI]()
-//        JKLocationManager.shared.jkReverseGeocoder(location: (currentLocation as AnyObject).coordinate) { (reGeocode, error) in
-//            if (error != nil) {
-//                JKLOG(error?.localizedDescription)
-//                print ("location1: "+"\(currentPosition)")
-//            } else {
-//                for poiItem in (reGeocode?.pois)!{
-//                    print ("pois")
-//                    print (poiItem)
-//                    showList.append(poiItem)
-//                }
-//                var addr = ""
-//                for cell in showList {
-//                    addr += cell.name
-//                }
-//                
-////                let item: AMapPOI = showList[indexPath.row] as! AMapPOI
-//                currentPosition = addr
-////                currentPosition = (reGeocode?.addressComponent.city)!
-//                JKLOG("\(reGeocode?.formattedAddress)\n\(reGeocode?.addressComponent)")
-//                print ("location2: "+"\(currentPosition)")
-//            }
-//        }
-        
-        positionLabel.text = "\(currentLatitude)"
-        //只调用一次，获取地图之后就可以更新了
+//        只调用一次，获取地图之后就可以先暂停了
         locationManager.stopUpdatingLocation()
-        ////////////////
     }
+    
+    //定位ios自带地图
+    func LonLatToCity() {
+        let geocoder: CLGeocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(currentLocation) { (placemark, error) -> Void in
+            if(error == nil) {
+                let array = placemark! as NSArray
+                let mark = array.firstObject as! CLPlacemark
+                let city  = mark.country
+                JKLOG(city)
+//                let formattedAddressLines: NSString = ((mark.addressDictionary! as NSDictionary).value(forKey: "FormattedAddressLines") as AnyObject).firstObject as! NSString
+//                //这是具体位置
+//                let name: NSString = (mark.addressDictionary! as NSDictionary).value(forKey: "Name") as! NSString
+//                //这是区
+//                let subLocality: NSString = (mark.addressDictionary! as NSDictionary).value(forKey: "SubLocality") as! NSString
+//     
+//                JKLOG(formattedAddressLines)
+//                JKLOG(name)
+//                JKLOG(subLocality)
+                self.positionLabel.text = city
+            } else {
+                //定位失败
+                JKLOG(error)
+                self.positionLabel.text = "定位失败"
+            }
+        }
+        //只调用一次，获取地图之后就可以先暂停了
+        locationManager.stopUpdatingLocation()
+    }
+    
     @IBAction func unwindToList(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindToList" {
 //            positionLabel.text = positionInfo
@@ -313,26 +338,21 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
     
 
     
-    /***** 网络状态监听部分（开始） *****/
-    // Reachability必须一直存在，所以需要设置为全局变量
+    //判断网络状态
     let reachability = Reachability()!
     
     func NetworkStatusListener() {
-        // 1、设置网络状态消息监听 2、获得网络Reachability对象
+        //设置网络状态消息监听
         NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged),name: ReachabilityChangedNotification,object: reachability)
         do{
-            // 3、开启网络状态消息监听
             try reachability.startNotifier()
         }catch{
             print("could not start reachability notifier")
         }
     }
     
-    // 移除消息通知
     deinit {
-        // 关闭网络状态消息监听
         reachability.stopNotifier()
-        // 移除网络状态消息通知
         NotificationCenter.default.removeObserver(self, name: ReachabilityChangedNotification, object: reachability)
     }
     
@@ -340,22 +360,22 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
     func reachabilityChanged(note: NSNotification) {
         
         let reachability = note.object as! Reachability
-        // 准备获取网络连接信息
         if reachability.isReachable {
-            // 判断网络连接状态
+            networkStatus = 1
             print("网络连接：可用")
             if reachability.isReachableViaWiFi {
-                // 判断网络连接类型
                 print("连接类型：WiFi")
             } else {
                 print("连接类型：移动网络")
             }
             //定位的button设置为可选
             positionButton.isEnabled = true
+//            LonLatToCity()
         } else {
+            networkStatus = 0
             print("网络连接：不可用")
             DispatchQueue.main.async {
-                // 不加这句导致界面还没初始化完成就打开警告框，这样不行
+                // 不加这句导致界面还没初始化完成就打开警告框，很奇怪？？
                 self.alert_noNetwrok() // 警告框，提示没有网络
             }
             //定位的button设置为不可选
@@ -363,14 +383,12 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         }
     }
     
-    // 警告框，提示没有连接网络
     func alert_noNetwrok() -> Void {
         let alert = UIAlertController(title: "系统提示", message: "网络连接错误，无法正常加载定位", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "确定", style: .default, handler: nil)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
-    /***** 网络状态监听部分（结束）*****/
 
 }
 

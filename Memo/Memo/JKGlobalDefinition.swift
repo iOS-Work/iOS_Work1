@@ -11,7 +11,7 @@ import UIKit
 
 var currentLatitude = 0.0
 var currentLongitude = 0.0
-var currentPosition = "Position"
+var currentPosition: String = ""
 
 func iOS8()->Bool{return((UIDevice.current.systemVersion as NSString).floatValue >= 8.0)}
 func iOS10()->Bool{return((UIDevice.current.systemVersion as NSString).floatValue >= 10.0)}
@@ -20,6 +20,8 @@ func JKScreenHeight() -> CGFloat{return UIScreen.main.bounds.size.height}
 func JKMaxYOfView(_ view: UIView) -> CGFloat{return view.frame.origin.y + view.frame.size.height}
 var globalMemo : MemoDataMO?
 var gmStatus = 0
+var bjLatitude = 39.95264
+var bjLongitude = 116.34375
 func JKColor_RGB_Float(r:Float,g:Float,b:Float) -> UIColor {
     return UIColor.init(colorLiteralRed: r, green: g, blue: b, alpha: 1.0)
 }
