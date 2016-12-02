@@ -3,12 +3,17 @@
     <entity name="MemoData" representedClassName="MemoDataMO" syncable="YES">
         <attribute name="memoColor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memoContent" attributeType="String" syncable="YES"/>
+        <attribute name="memoDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memoDay" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memoHour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memoImage" optional="YES" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
+        <attribute name="memoMinute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memoMonth" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memoPosition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memoTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memoYear" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MemoData" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="MemoData" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

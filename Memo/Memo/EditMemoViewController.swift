@@ -10,14 +10,14 @@ import UIKit
 import CoreLocation
 
 
-var time = ""
-var day = ""
-
 class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let locationManager = CLLocationManager()
     var memo: MemoDataMO?
     var positionInfo: String = ""
+    var initTime = [Int]()
+    var time = ""
+    var day = ""
     
     @IBOutlet weak var positionButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -31,6 +31,18 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         }
         
     }
+    
+    @IBOutlet weak var hourTextField: UITextField!
+    
+    @IBOutlet weak var minuteTextField: UITextField!
+    
+    @IBOutlet weak var yearTextField: UITextField!
+    
+    
+    @IBOutlet weak var monthTextField: UITextField!
+    
+    
+    @IBOutlet weak var dayTextField: UITextField!
     var colorChoose: String? = "blue"
     @IBOutlet weak var blue: UIButton!
     
@@ -142,6 +154,43 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+        
+        initTime = getTimes()
+        
+        if memo?.memoDay == nil {
+        hourTextField.text = String(initTime[3])
+        minuteTextField.text = String(initTime[4])
+        yearTextField.text = String(initTime[0])
+        monthTextField.text = String(initTime[1])
+        dayTextField.text = String(initTime[2])
+        } else {
+            hourTextField.text = memo?.memoHour
+            minuteTextField.text = memo?.memoMinute
+            yearTextField.text = memo?.memoYear
+            monthTextField.text = memo?.memoMonth
+            dayTextField.text = memo?.memoDate
+
+        }
+        
+    }
+    // 获取当前时间
+    func getTimes() -> [Int] {
+        
+        var timers: [Int] = [] //  返回的数组
+        
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year,.month,.day, .weekday, .hour, .minute,.second], from: Date())
+        
+        timers.append(comps.year!)  // 年 ，后2位数
+        timers.append(comps.month!)            // 月
+        timers.append(comps.day!)                // 日
+        timers.append(comps.hour!)               // 小时
+        timers.append(comps.minute!)            // 分钟
+        timers.append(comps.second!)            // 秒
+        timers.append(comps.weekday! - 1)      //星期
+        
+        return timers;
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
@@ -172,17 +221,24 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             let content = memoContent.text
             let color = colorChoose
             let photo = addPhotoButton.image(for: .normal)
+            time = hourTextField.text! + ":" + minuteTextField.text!
+            day = yearTextField.text! + "年" + monthTextField.text! + "月" + dayTextField.text! + "日"
             let mTime = time
             let mDay = day
+            let hour = hourTextField.text
+            let minute = minuteTextField.text
+            let year = yearTextField.text
+            let month = monthTextField.text
+            let date = dayTextField.text
             print(time)
             print(day)
 //            -> [Int] print(TimeTableViewController.getTime(TimeTableViewController.init())
             //let notes = notesTextView.text
             
             if memo == nil { // add a new entry
-                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,time: mTime,day: mDay,memoColor: color)
+                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
             } else { // updating the existing entry
-                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,time: mTime,day: mDay,memoColor: color)
+                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
             }
             }
 
@@ -318,73 +374,4 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
 
 }
 
-class TimeTableViewController: UITableViewController {
-    
-    
-    @IBOutlet weak var hourTextField: UITextField!
-    
-    @IBOutlet weak var minuteTextField: UITextField!
-    
-    @IBOutlet weak var yearTextField: UITextField!
-    
-    @IBOutlet weak var monthTextField: UITextField!
-    
-    @IBOutlet weak var dayTextField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        let i = getTimes()
-        
-        hourTextField.text = String(i[3])
-        minuteTextField.text = String(i[4])
-        yearTextField.text = String(i[0])
-        monthTextField.text = String(i[1])
-        dayTextField.text = String(i[2])
-        
-        time = hourTextField.text! + ":" + minuteTextField.text!
-        day = yearTextField.text! + "年" + monthTextField.text! + "月" + dayTextField.text! + "日"
-
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    
-    func getTimes() -> [Int] {
-        
-        var timers: [Int] = [] //  返回的数组
-        
-        let calendar: Calendar = Calendar(identifier: .gregorian)
-        var comps: DateComponents = DateComponents()
-        comps = calendar.dateComponents([.year,.month,.day, .weekday, .hour, .minute,.second], from: Date())
-        
-        timers.append(comps.year!)  // 年 ，后2位数
-        timers.append(comps.month!)            // 月
-        timers.append(comps.day!)                // 日
-        timers.append(comps.hour!)               // 小时
-        timers.append(comps.minute!)            // 分钟
-        timers.append(comps.second!)            // 秒
-        timers.append(comps.weekday! - 1)      //星期
-        
-        return timers;
-    }
-    
-//    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddView.textChanges), name: UITextFieldTextDidChangeNotification, object: nil)
-    
-    
-    final func getTime()  -> [String]{
-        if self.hourTextField.text != "" {
-            time = hourTextField.text! + ":" + minuteTextField.text!
-            day = yearTextField.text! + "年" + monthTextField.text! + "月" + dayTextField.text! + "日"
-        }
-        
-        print("内容变化所触发")
-        return [time];
-    }
-    
-
- }

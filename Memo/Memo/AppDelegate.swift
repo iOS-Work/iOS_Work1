@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    func addToContext(memoContent: String, photo: UIImage?, time: String?, day: String?, memoColor: String?) -> MemoDataMO {
+    func addToContext(memoContent: String, photo: UIImage?, time: String?, day: String?, hour: String?, minute: String?, year: String?,month: String?,date: String?,memoColor: String?) -> MemoDataMO {
         let memo = MemoDataMO(context: persistentContainer.viewContext)
         memo.memoContent = memoContent
         if let photo = photo {
@@ -108,6 +108,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         memo.memoTime = time
         memo.memoDay = day
         memo.memoColor = memoColor
+        memo.memoHour = hour
+        memo.memoMinute = minute
+        memo.memoYear = year
+        memo.memoMonth = month
+        memo.memoDate = date
 //        if let photo = photo {
 //            person.photo = UIImagePNGRepresentation(photo) }
 
@@ -132,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveContext()
     }
 
-    func updateToContext(memo: MemoDataMO, content: String,photo: UIImage?, time: String?, day: String?, memoColor: String?) {
+    func updateToContext(memo: MemoDataMO, content: String,photo: UIImage?, time: String?, day: String?,hour: String?, minute: String?, year: String?,month: String?,date: String?, memoColor: String?) {
         memo.memoContent = content
         if let mPhoto = photo {
             if mPhoto == nil {
@@ -144,6 +149,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         memo.memoTime = time
         memo.memoDay = day
         memo.memoColor = memoColor
+        memo.memoHour = hour
+        memo.memoMinute = minute
+        memo.memoYear = year
+        memo.memoMonth = month
+        memo.memoDate = date
+
         print("updating the person to context ...")
         saveContext()
     }
