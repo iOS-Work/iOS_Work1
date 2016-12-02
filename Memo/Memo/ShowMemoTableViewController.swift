@@ -30,7 +30,7 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         if click == 0 {
         c = 1
         
-        sortMemo = blueMemo + purpleMemo + greenMemo + yellowMemo + redMemo
+        sortMemo = redMemo + yellowMemo + greenMemo + purpleMemo + blueMemo
         viewDidLoad()
         tableView.reloadData()
         } else {
