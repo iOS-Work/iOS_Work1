@@ -101,8 +101,8 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
     @IBAction func saveMemo(_ sender: UIButton) {
         
         if memoContent.text == nil || memoContent.text!.isEmpty {
-            let alertController = UIAlertController(title: "Invalid Data", message: "The content cannot be empty", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style:.cancel, handler: nil))
+            let alertController = UIAlertController(title: "数据无效", message: "备忘录的内容不能为空", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "确定", style:.cancel, handler: nil))
             present(alertController, animated: true, completion: nil)
         } else {
             performSegue(withIdentifier: "unwindToShowMemo", sender: self)

@@ -14,15 +14,13 @@ public typealias JKReGeocodeCompletionHandler = (AMapReGeocode?, Error?) -> Void
 
 
 class JKLocationManager: NSObject,AMapLocationManagerDelegate {
-    //    let JKGeocoderKey = "JKGeocoderKey"
-    //    let JKRegeocoderKey = "JKRegeocoderKey"
     var geocodeCompletionHandler: JKGeocodeCompletionHandler?
     var reGeocodeCompletionHandler: JKReGeocodeCompletionHandler?
     
     
     // 推荐的单例写法
     static let shared = JKLocationManager()
-    private override init() { // 防止外部初始化
+    private override init() {
         super.init()
         self.initialization()
     }

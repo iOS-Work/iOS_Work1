@@ -26,13 +26,13 @@ class JKMapViewController: FCBaseViewController {
             return search!
         }()
     
-    //return without save action
+    //返回监听事件
     @IBAction func backAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "unwindToList", sender: self)
         
     }
     
-    //recover the original position action
+    //恢复成最初的地理位置
     @IBAction func recoverAction(_ sender: UIBarButtonItem) {
 //        sender.isSelected = true
         self.mapView?.setCenter((self.mapView?.userLocation.coordinate)!, animated: true)
@@ -50,11 +50,9 @@ class JKMapViewController: FCBaseViewController {
         self.hiddenTableView?.backgroundColor = UIColor.white
         self.view.addSubview(self.hiddenTableView!)
         
-        // 搜索结果展示
         self.searchResultsController = JKMapSearchViewController.init(style: .plain)
         self.searchResultsController?.delegate = self
         
-        // 搜索控制器
         self.searchController = UISearchController.init(searchResultsController: self.searchResultsController)
         self.searchController?.delegate = self
         self.searchController?.searchResultsUpdater = self
@@ -96,7 +94,7 @@ class JKMapViewController: FCBaseViewController {
 //        self.mapView?.setCenter(location, animated: true)
         /////////////////////////
         
-        // 黑色的中心点
+        // 中心点
         let flagView = UIView.init()
         flagView.bounds = CGRect.init(x: 0, y: 0, width: 10, height: 10)
         flagView.backgroundColor = UIColor.black
@@ -107,7 +105,7 @@ class JKMapViewController: FCBaseViewController {
         // 监听定位使能
         NotificationCenter.default.addObserver(self, selector: #selector(JKMapViewController.didReceive(notification:)), name: NSNotification.Name.JKLocation.disable, object: nil)
         
-        // 底部显示结果的tableView
+        
         self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: JKMaxYOfView(self.mapView!), width: JKScreenWidth(), height: JKScreenHeight() - JKMaxYOfView(self.mapView!)), style: .plain)
         self.tableView?.backgroundColor = UIColor.white
         self.tableView?.allowsSelection = true
@@ -245,7 +243,6 @@ extension JKMapViewController: UISearchBarDelegate,UISearchResultsUpdating,UISea
     func updateSearchResults(for searchController: UISearchController) {
         let request: AMapInputTipsSearchRequest = AMapInputTipsSearchRequest.init()
         request.keywords = searchController.searchBar.text
-//        request.types = "生活服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|公司企业|道路附属设施|地名地址信息|公共设施"
         request.city = JKLocationManager.shared.currentCity
         self.searchAPI.aMapInputTipsSearch(request)
     }

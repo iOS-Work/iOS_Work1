@@ -30,7 +30,7 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         if click == 0 {
         c = 1
         
-        sortMemo = redMemo + yellowMemo + greenMemo + purpleMemo + blueMemo
+//        sortMemo = redMemo + yellowMemo + greenMemo + purpleMemo + blueMemo
         viewDidLoad()
         tableView.reloadData()
         } else {
@@ -59,8 +59,9 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
             //acqList += fetchedList
 
             if c == 1 {
-                acqAllList.removeAll()
-                acqAllList += sortMemo
+                //acqAllList.removeAll()
+//                acqAllList += sortMemo
+                acqAllList += fetchedList
                 sortMemo.removeAll()
                 blueMemo.removeAll()
                 purpleMemo.removeAll()
@@ -69,7 +70,7 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
                 redMemo.removeAll()
                 click = 1
             } else {
-                acqAllList.removeAll()
+                //acqAllList.removeAll()
                 acqAllList += fetchedList
                 sortMemo.removeAll()
                 blueMemo.removeAll()
@@ -79,11 +80,11 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
                 redMemo.removeAll()
                 click = 0
             }
+            globalList = acqAllList
         }
         
-
         acqList.removeAll()
-        globalList = acqAllList
+        
         if (searchStatus == 0) {
             acqList = acqAllList
         } else if (searchStatus == 1){
@@ -108,17 +109,43 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         } else {
             acqList = acqAllList
         }
+        if c == 1 {
+            let acqOrderList = acqList
+            acqList.removeAll()
+            acqList = listShowInOrder(acqOrderList: acqOrderList)
+        }
+        
 //        for memo in acqList {
 //            if let mContent = memo?.mContent {
 //                memo?.mImage = UIImage(named: mContent)
 //                memo?.mTime = "11.26"
 //            } }
-        //self.navigationController?.navigationBar.barTintColor = UIColor.white
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func listShowInOrder(acqOrderList: [MemoDataMO]) -> [MemoDataMO]{
+        var tmpList = [MemoDataMO]()
+        
+        for memo in acqOrderList {
+            if memo.memoColor == nil {
+                memo.memoColor = "blue"
+            }
+            if memo.memoColor == "blue" {
+                blueMemo.append(memo)
+            } else if memo.memoColor == "purple" {
+                purpleMemo.append(memo)
+            } else if memo.memoColor == "green" {
+                greenMemo.append(memo)
+            } else if memo.memoColor == "yellow" {
+                yellowMemo.append(memo)
+            } else if memo.memoColor == "red" {
+                redMemo.append(memo)
+            } else {
+                blueMemo.append(memo)
+            }
+        }
+        tmpList = redMemo + yellowMemo + greenMemo + purpleMemo + blueMemo
+       
+        return tmpList
     }
 
     override func didReceiveMemoryWarning() {
@@ -166,19 +193,19 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         }
         if memo?.memoColor == "blue" {
             cell.alongImageView.image = UIImage(named: "button1")
-            blueMemo.append(memo!)
+//            blueMemo.append(memo!)
         } else if memo?.memoColor == "purple" {
             cell.alongImageView.image = UIImage(named: "button2")
-            purpleMemo.append(memo!)
+//            purpleMemo.append(memo!)
         } else if memo?.memoColor == "green" {
             cell.alongImageView.image = UIImage(named: "button3")
-            greenMemo.append(memo!)
+//            greenMemo.append(memo!)
         } else if memo?.memoColor == "yellow" {
             cell.alongImageView.image = UIImage(named: "button4")
-            yellowMemo.append(memo!)
+//            yellowMemo.append(memo!)
         } else {
             cell.alongImageView.image = UIImage(named: "button5")
-            redMemo.append(memo!)
+//            redMemo.append(memo!)
         }
         if memo?.memoDay == nil || memo?.memoTime == nil{
             memo?.memoDay = ""

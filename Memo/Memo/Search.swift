@@ -177,7 +177,6 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchField.text = items[indexPath.row]
         //选择相应的信息后的返回
-        //隐藏搜索框
         searchText = self.searchField.text!
         searchItems = self.items
         searchStatus = 2
