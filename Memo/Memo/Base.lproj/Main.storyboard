@@ -115,6 +115,9 @@
                                     <state key="normal" image="sort">
                                         <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeSort:" destination="eCy-gC-lZU" eventType="touchUpInside" id="2KI-SF-c8q"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="MAE-Np-TLD">

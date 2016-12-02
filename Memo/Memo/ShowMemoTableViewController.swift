@@ -12,12 +12,33 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
     
     //var acqList = [Memo("Memo1"), Memo("Memo2"), Memo("Memo3"), Memo("Memo4"), Memo("Memo5")]
     var acqList = [MemoDataMO]()
+    var blueMemo = [MemoDataMO]()
+    var purpleMemo = [MemoDataMO]()
+    var greenMemo = [MemoDataMO]()
+    var yellowMemo = [MemoDataMO]()
+    var redMemo = [MemoDataMO]()
+    var sortMemo = [MemoDataMO]()
+    var c = 0
+    var click = 0
     lazy var search: Search = {
         let se = Search.init(frame: UIScreen.main.bounds)
         se.delegate = self
         return se
     }()
     
+    @IBAction func changeSort(_ sender: UIButton) {
+        if click == 0 {
+        c = 1
+        
+        sortMemo = blueMemo + purpleMemo + greenMemo + yellowMemo + redMemo
+        viewDidLoad()
+        tableView.reloadData()
+        } else {
+            c = 0
+            viewDidLoad()
+            tableView.reloadData()
+        }
+    }
     @IBAction func handleSearch(_ sender: Any) {
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(self.search)
@@ -36,8 +57,31 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate),
             let fetchedList = appDelegate.fetchContext() {
             //acqList += fetchedList
-            acqAllList += fetchedList
+
+            if c == 1 {
+                acqAllList.removeAll()
+                acqAllList += sortMemo
+                sortMemo.removeAll()
+                blueMemo.removeAll()
+                purpleMemo.removeAll()
+                greenMemo.removeAll()
+                yellowMemo.removeAll()
+                redMemo.removeAll()
+                click = 1
+            } else {
+                acqAllList.removeAll()
+                acqAllList += fetchedList
+                sortMemo.removeAll()
+                blueMemo.removeAll()
+                purpleMemo.removeAll()
+                greenMemo.removeAll()
+                yellowMemo.removeAll()
+                redMemo.removeAll()
+                click = 0
+            }
         }
+        
+
         acqList.removeAll()
         globalList = acqAllList
         if (searchStatus == 0) {
@@ -109,31 +153,39 @@ class ShowMemoTableViewController: UITableViewController, SearchDelegate{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoListCell", for: indexPath) as!
         MemoListTableViewCell
-        let memo = acqList[indexPath.row]
+        var memo : MemoDataMO?
+
+         memo = acqList[indexPath.row]
+        
         // Configure the cell...
        // let mImage = memo?.mImage
        // cell.alongImageView.image = UIImage(data: memo.memoImage!)
-        cell.memoContent.text = memo.memoContent
-        if memo.memoColor == nil {
-            memo.memoColor = "blue"
+        cell.memoContent.text = memo?.memoContent
+        if memo?.memoColor == nil {
+            memo?.memoColor = "blue"
         }
-        if memo.memoColor == "blue" {
+        if memo?.memoColor == "blue" {
             cell.alongImageView.image = UIImage(named: "button1")
-        } else if memo.memoColor == "purple" {
+            blueMemo.append(memo!)
+        } else if memo?.memoColor == "purple" {
             cell.alongImageView.image = UIImage(named: "button2")
-        } else if memo.memoColor == "green" {
+            purpleMemo.append(memo!)
+        } else if memo?.memoColor == "green" {
             cell.alongImageView.image = UIImage(named: "button3")
-        } else if memo.memoColor == "yellow" {
+            greenMemo.append(memo!)
+        } else if memo?.memoColor == "yellow" {
             cell.alongImageView.image = UIImage(named: "button4")
+            yellowMemo.append(memo!)
         } else {
             cell.alongImageView.image = UIImage(named: "button5")
+            redMemo.append(memo!)
         }
-        if memo.memoDay == nil || memo.memoTime == nil{
-            memo.memoDay = ""
-            memo.memoTime = ""
-            cell.memoTime.text = memo.memoDay! + "  " + memo.memoTime!
+        if memo?.memoDay == nil || memo?.memoTime == nil{
+            memo?.memoDay = ""
+            memo?.memoTime = ""
+            cell.memoTime.text = (memo?.memoDay!)! + "  " + (memo?.memoTime!)!
         } else {
-        cell.memoTime.text = memo.memoDay! + "  " + memo.memoTime!
+        cell.memoTime.text = (memo?.memoDay!)! + "  " + (memo?.memoTime!)!
         }
         //cell.memoTime.text = String(describing: memo.memoDay) + String(describing: memo.memoTime)
         return cell }
