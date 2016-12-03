@@ -126,6 +126,9 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
         memo = globalMemo
         
         memoContent.text = memo?.memoContent
+        positionLabel.numberOfLines = 0;
+        positionLabel.text = memo?.memoPosition
+        
         }
         
         if let photoData = memo?.memoImage {
@@ -225,13 +228,14 @@ class EditMemoViewController: UIViewController, CLLocationManagerDelegate,UIImag
             let year = yearTextField.text
             let month = monthTextField.text
             let date = dayTextField.text
+            let position = positionLabel.text
             print(time)
             print(day)
             
             if memo == nil { // add a new entry
-                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
+                self.memo = appDelegate.addToContext(memoContent: content!,photo: photo,position: position,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
             } else { // updating the existing entry
-                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
+                appDelegate.updateToContext(memo: memo!, content: content!,photo: photo,position: position,time: mTime,day: mDay,hour: hour,minute: minute,year: year,month: month,date: date,memoColor: color)
             }
         }
     }

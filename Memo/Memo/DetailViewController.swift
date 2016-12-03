@@ -49,6 +49,7 @@ class DetailViewController: UIViewController {
         memoContent.text = memo?.memoContent
         showTime.text = memo?.memoTime
         showDay.text = memo?.memoDay
+        positionLabel.numberOfLines = 0;
         positionLabel.text = memo?.memoPosition
         
 //        if let photo = person?.photo {
